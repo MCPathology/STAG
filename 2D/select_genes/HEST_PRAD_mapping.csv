@@ -1,0 +1,251 @@
+Gene Name,Classification ID,Cluster_Top_Terms
+MSMB,-1,
+KLK3,-1,
+MT-CO3,-1,
+MT-CO2,-1,
+RPL41,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+MT-CO1,-1,
+MT-ND3,-1,
+MT-ATP6,-1,
+EEF1A1,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPLP1,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+MT-ND4,-1,
+RPL37A,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+KLK2,-1,
+RPL13,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL13A,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+MT-CYB,-1,
+RPL10,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPS12,-1,
+RPS18,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPS27,7,Ribosomal Small Subunit Assembly (GO:0000028) | Ribosome Assembly (GO:0042255) | Ribosomal Small Subunit Biogenesis (GO:0042274)
+TPT1,4,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+RPS28,7,Ribosomal Small Subunit Assembly (GO:0000028) | Ribosome Assembly (GO:0042255) | Ribosomal Small Subunit Biogenesis (GO:0042274)
+RPS8,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+ACPP,-1,
+RPL37,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL28,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPS15,7,Ribosomal Small Subunit Assembly (GO:0000028) | Ribosome Assembly (GO:0042255) | Ribosomal Small Subunit Biogenesis (GO:0042274)
+RPL32,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL34,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPS14,7,Ribosomal Small Subunit Assembly (GO:0000028) | Ribosome Assembly (GO:0042255) | Ribosomal Small Subunit Biogenesis (GO:0042274)
+RPS27A,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL12,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPS29,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL30,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL36,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+MT-ND1,-1,
+RPS24,5,rRNA Metabolic Process (GO:0016072) | Cytoplasmic Translation (GO:0002181) | ncRNA Processing (GO:0034470)
+RPL8,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPS6,5,rRNA Metabolic Process (GO:0016072) | Cytoplasmic Translation (GO:0002181) | ncRNA Processing (GO:0034470)
+RPS2,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPS19,7,Ribosomal Small Subunit Assembly (GO:0000028) | Ribosome Assembly (GO:0042255) | Ribosomal Small Subunit Biogenesis (GO:0042274)
+RPL18,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPS3A,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL39,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL26,5,rRNA Metabolic Process (GO:0016072) | Cytoplasmic Translation (GO:0002181) | ncRNA Processing (GO:0034470)
+MALAT1,-1,
+RPS23,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL7A,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPS15A,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL29,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPLP2,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL35A,5,rRNA Metabolic Process (GO:0016072) | Cytoplasmic Translation (GO:0002181) | ncRNA Processing (GO:0034470)
+RPL3,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL18A,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL19,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL9,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+FTH1,-1,
+FTL,-1,
+RPL31,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPS21,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL21,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPS4X,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPS13,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+B2M,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+RPS11,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL4,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPS3,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPS25,5,rRNA Metabolic Process (GO:0016072) | Cytoplasmic Translation (GO:0002181) | ncRNA Processing (GO:0034470)
+MT-ND2,-1,
+RPL15,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL11,5,rRNA Metabolic Process (GO:0016072) | Cytoplasmic Translation (GO:0002181) | ncRNA Processing (GO:0034470)
+RPS16,5,rRNA Metabolic Process (GO:0016072) | Cytoplasmic Translation (GO:0002181) | ncRNA Processing (GO:0034470)
+RPL23A,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL35,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPS10,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL24,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPLP0,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+NPY,-1,
+RPS5,7,Ribosomal Small Subunit Assembly (GO:0000028) | Ribosome Assembly (GO:0042255) | Ribosomal Small Subunit Biogenesis (GO:0042274)
+RPL5,5,rRNA Metabolic Process (GO:0016072) | Cytoplasmic Translation (GO:0002181) | ncRNA Processing (GO:0034470)
+RPL10A,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL6,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPS20,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPS7,5,rRNA Metabolic Process (GO:0016072) | Cytoplasmic Translation (GO:0002181) | ncRNA Processing (GO:0034470)
+RPL7,5,rRNA Metabolic Process (GO:0016072) | Cytoplasmic Translation (GO:0002181) | ncRNA Processing (GO:0034470)
+SERF2,-1,
+RPS9,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL38,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL27A,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL14,5,rRNA Metabolic Process (GO:0016072) | Cytoplasmic Translation (GO:0002181) | ncRNA Processing (GO:0034470)
+FAU,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL22,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RACK1,4,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+UBA52,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+RPL23,-1,
+TAGLN,-1,
+RPSA,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+NACA,-1,
+RPL27,5,rRNA Metabolic Process (GO:0016072) | Cytoplasmic Translation (GO:0002181) | ncRNA Processing (GO:0034470)
+AZGP1,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+RPL36A,-1,
+TMSB10,-1,
+MYL6,-1,
+MYL9,8,Homotypic Cell-Cell Adhesion (GO:0034109) | Platelet Aggregation (GO:0070527) | Negative Regulation Of Oxidative Stress-Induced Intrinsic Apoptotic Signaling Pathway (GO:1902176)
+ACTG1,8,Homotypic Cell-Cell Adhesion (GO:0034109) | Platelet Aggregation (GO:0070527) | Negative Regulation Of Oxidative Stress-Induced Intrinsic Apoptotic Signaling Pathway (GO:1902176)
+PLA2G2A,-1,
+CST3,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+ACTB,4,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+GAPDH,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+TFF3,-1,
+TMSB4X,-1,
+RDH11,-1,
+SPON2,-1,
+EEF2,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+UQCRQ,9,"Mitochondrial Electron Transport, Ubiquinol To Cytochrome C (GO:0006122) | Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646)"
+S100A6,-1,
+ATP5F1E,2,ATP Biosynthetic Process (GO:0006754) | Proton Motive Force-Driven ATP Synthesis (GO:0015986) | Proton Motive Force-Driven Mitochondrial ATP Synthesis (GO:0042776)
+IGKC,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+ACTG2,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+RPL17,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+MT2A,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+ADIRF,-1,
+H2AFJ,-1,
+RPS17,5,rRNA Metabolic Process (GO:0016072) | Cytoplasmic Translation (GO:0002181) | ncRNA Processing (GO:0034470)
+PABPC1,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+ITM2B,-1,
+TOMM7,-1,
+PTGDS,-1,
+COX7C,6,"Mitochondrial Electron Transport, Cytochrome C To Oxygen (GO:0006123) | Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646)"
+SNHG25,-1,
+HINT1,-1,
+SSR4,-1,
+PPIA,8,Homotypic Cell-Cell Adhesion (GO:0034109) | Platelet Aggregation (GO:0070527) | Negative Regulation Of Oxidative Stress-Induced Intrinsic Apoptotic Signaling Pathway (GO:1902176)
+UBB,4,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+UQCR11,9,"Mitochondrial Electron Transport, Ubiquinol To Cytochrome C (GO:0006122) | Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646)"
+PSAP,-1,
+MGP,-1,
+PTMA,4,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+ACTA2,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+EEF1D,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+UQCRB,9,"Mitochondrial Electron Transport, Ubiquinol To Cytochrome C (GO:0006122) | Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646)"
+CKB,-1,
+FXYD3,-1,
+PFDN5,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+MT1E,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+SEC11C,-1,
+TPM2,-1,
+DBI,-1,
+DHRS7,-1,
+FLNA,8,Homotypic Cell-Cell Adhesion (GO:0034109) | Platelet Aggregation (GO:0070527) | Negative Regulation Of Oxidative Stress-Induced Intrinsic Apoptotic Signaling Pathway (GO:1902176)
+P4HB,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+CD63,-1,
+HLA-C,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+HLA-B,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+NDUFA4,6,"Mitochondrial Electron Transport, Cytochrome C To Oxygen (GO:0006123) | Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646)"
+UBC,-1,
+H3F3A,-1,
+NUPR1,4,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+RPS26,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+CD81,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+PPDPF,-1,
+SLC45A3,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+SLC25A6,-1,
+COX4I1,6,"Mitochondrial Electron Transport, Cytochrome C To Oxygen (GO:0006123) | Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646)"
+HSPB1,8,Homotypic Cell-Cell Adhesion (GO:0034109) | Platelet Aggregation (GO:0070527) | Negative Regulation Of Oxidative Stress-Induced Intrinsic Apoptotic Signaling Pathway (GO:1902176)
+MYH11,-1,
+RPL36AL,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+KLK4,-1,
+MT-ND5,-1,
+CFD,-1,
+FABP5,-1,
+LGALS1,4,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+EIF1,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+HSP90AA1,4,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+TMA7,-1,
+FOS,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+CD74,4,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+MT1G,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+NKX3-1,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+LTF,4,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+HSP90AB1,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+COX6C,6,"Mitochondrial Electron Transport, Cytochrome C To Oxygen (GO:0006123) | Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646)"
+ATP5MC2,2,ATP Biosynthetic Process (GO:0006754) | Proton Motive Force-Driven ATP Synthesis (GO:0015986) | Proton Motive Force-Driven Mitochondrial ATP Synthesis (GO:0042776)
+DSTN,-1,
+FBLN1,-1,
+PFN1,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+COX6A1,6,"Mitochondrial Electron Transport, Cytochrome C To Oxygen (GO:0006123) | Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646)"
+ELOB,-1,
+ATP5ME,2,ATP Biosynthetic Process (GO:0006754) | Proton Motive Force-Driven ATP Synthesis (GO:0015986) | Proton Motive Force-Driven Mitochondrial ATP Synthesis (GO:0042776)
+CFL1,4,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+DES,-1,
+UBL5,-1,
+S100A11,-1,
+BTF3,-1,
+GPX4,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+HSP90B1,4,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+CHCHD2,-1,
+SRP14,-1,
+EDF1,-1,
+HLA-A,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+NDRG1,-1,
+GNAS,8,Homotypic Cell-Cell Adhesion (GO:0034109) | Platelet Aggregation (GO:0070527) | Negative Regulation Of Oxidative Stress-Induced Intrinsic Apoptotic Signaling Pathway (GO:1902176)
+PLPP1,-1,
+OST4,-1,
+CD9,-1,
+C12orf57,-1,
+TMPRSS2,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+SELENOW,-1,
+PMEPA1,-1,
+CSRP1,8,Homotypic Cell-Cell Adhesion (GO:0034109) | Platelet Aggregation (GO:0070527) | Negative Regulation Of Oxidative Stress-Induced Intrinsic Apoptotic Signaling Pathway (GO:1902176)
+SNHG8,-1,
+ATP5MG,2,ATP Biosynthetic Process (GO:0006754) | Proton Motive Force-Driven ATP Synthesis (GO:0015986) | Proton Motive Force-Driven Mitochondrial ATP Synthesis (GO:0042776)
+COX8A,6,"Mitochondrial Electron Transport, Cytochrome C To Oxygen (GO:0006123) | Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646)"
+TSPAN1,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+HNRNPA1,-1,
+MZT2B,-1,
+COX7A2,6,"Mitochondrial Electron Transport, Cytochrome C To Oxygen (GO:0006123) | Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646)"
+H3F3B,-1,
+UQCR10,9,"Mitochondrial Electron Transport, Ubiquinol To Cytochrome C (GO:0006122) | Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646)"
+DCXR,-1,
+KRT18,4,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+CIRBP,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+OAZ1,-1,
+HERPUD1,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+IGHA1,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+HSPA8,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+ATP5MD,-1,
+NEFH,-1,
+NPM1,0,Negative Regulation Of Protein Kinase Activity By Regulation Of Protein Phosphorylation (GO:0044387) | Ribosomal Large Subunit Export From Nucleus (GO:0000055) | Ribosomal Small Subunit Export From Nucleus (GO:0000056)
+TIMP1,-1,
+MT1X,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+COX5B,6,"Mitochondrial Electron Transport, Cytochrome C To Oxygen (GO:0006123) | Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646)"
+UQCRH,9,"Mitochondrial Electron Transport, Ubiquinol To Cytochrome C (GO:0006122) | Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646)"
+EEF1B2,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+TMEM258,-1,
+RPS4Y1,1,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+PRAC1,-1,
+POLR2L,-1,
+CD99,8,Homotypic Cell-Cell Adhesion (GO:0034109) | Platelet Aggregation (GO:0070527) | Negative Regulation Of Oxidative Stress-Induced Intrinsic Apoptotic Signaling Pathway (GO:1902176)
+NEAT1,-1,
+SEC61G,-1,
+ATP5MF,2,ATP Biosynthetic Process (GO:0006754) | Proton Motive Force-Driven ATP Synthesis (GO:0015986) | Proton Motive Force-Driven Mitochondrial ATP Synthesis (GO:0042776)
+MYLK,-1,
+COX6B1,6,"Mitochondrial Electron Transport, Cytochrome C To Oxygen (GO:0006123) | Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646)"
+KRT8,-1,
+TPM1,-1,
+COMMD6,-1,
+A2M,-1,
+VIM,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)
+SKP1,3,Cellular Response To Zinc Ion (GO:0071294) | Cellular Response To Copper Ion (GO:0071280) | Response To Cadmium Ion (GO:0046686)

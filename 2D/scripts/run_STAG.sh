@@ -1,0 +1,30 @@
+# CUDA_VISIBLE_DEVICES=4 python train_STAG.py  --data_name HEST_kidney --k_folds 6 --select_fold 1      # x
+# CUDA_VISIBLE_DEVICES=4 python train_STAG.py  --data_name HEST_kidney --k_folds 6 --select_fold 2      # x
+# CUDA_VISIBLE_DEVICES=4 python train_STAG.py  --data_name HEST_kidney --k_folds 6 --select_fold 3
+# CUDA_VISIBLE_DEVICES=4 python train_STAG.py  --data_name HEST_kidney --k_folds 6 --select_fold 4
+# CUDA_VISIBLE_DEVICES=4 python train_STAG.py  --data_name HEST_kidney --k_folds 6 --select_fold 5
+# CUDA_VISIBLE_DEVICES=4 python train_STAG.py  --data_name HEST_kidney --k_folds 6 --select_fold 1      # ?
+# CUDA_VISIBLE_DEVICES=4 python train_STAG.py  --data_name HEST_kidney --k_folds 6 --select_fold 2      # ?
+# CUDA_VISIBLE_DEVICES=4 python train_STAG.py  --data_name HEST_mouse_brain --k_folds 5 --select_fold 0
+# CUDA_VISIBLE_DEVICES=4 python train_STAG.py  --data_name HEST_mouse_brain --k_folds 5 --select_fold 1
+# CUDA_VISIBLE_DEVICES=4 python train_STAG.py  --data_name HEST_mouse_brain --k_folds 5 --select_fold 2
+# CUDA_VISIBLE_DEVICES=4 python train_STAG.py  --data_name HEST_mouse_brain --k_folds 5 --select_fold 3
+# CUDA_VISIBLE_DEVICES=4 python train_STAG.py  --data_name HEST_mouse_brain --k_folds 5 --select_fold 4
+# CUDA_VISIBLE_DEVICES=4 python train_STAG.py  --data_name HEST_PRAD --k_folds 6 --select_fold 0
+# CUDA_VISIBLE_DEVICES=4 python train_STAG.py  --data_name HEST_PRAD --k_folds 6 --select_fold 1
+# CUDA_VISIBLE_DEVICES=4 python train_STAG.py  --data_name HEST_PRAD --k_folds 6 --select_fold 2
+# CUDA_VISIBLE_DEVICES=4 python train_STAG.py  --data_name HEST_PRAD --k_folds 6 --select_fold 3
+# CUDA_VISIBLE_DEVICES=4 python train_STAG.py  --data_name HEST_PRAD --k_folds 6 --select_fold 4
+# CUDA_VISIBLE_DEVICES=4 python train_STAG.py  --data_name HEST_PRAD --k_folds 6 --select_fold 5
+
+CUDA_VISIBLE_DEVICES=0 python train_STAG.py  --data_name HER2 --k_folds 6 
+# CUDA_VISIBLE_DEVICES=1 python train_STAG.py  --data_name HBC --k_folds 9  --select_fold 5
+# CUDA_VISIBLE_DEVICES=1 python train_STAG.py  --data_name HBC --k_folds 9  --select_fold 6
+# CUDA_VISIBLE_DEVICES=1 python train_STAG.py  --data_name HBC --k_folds 9  --select_fold 7
+# CUDA_VISIBLE_DEVICES=1 python train_STAG.py  --data_name HBC --k_folds 9  --select_fold 8
+# CUDA_VISIBLE_DEVICES=1 python train_STAG.py  --data_name HBC --k_folds 9  --select_fold 9
+
+# CUDA_VISIBLE_DEVICES=2 python train_STAG.py  --data_name cSCC --k_folds 4
+# CUDA_VISIBLE_DEVICES=3 python train_STAG.py  --data_name HEST_kidney --k_folds 6
+# CUDA_VISIBLE_DEVICES=4 python train_STAG.py  --data_name HEST_mouse_brain --k_folds 5
+# CUDA_VISIBLE_DEVICES=5 python train_STAG.py  --data_name HEST_PRAD --k_folds 6

@@ -1,0 +1,38 @@
+GENERAL:
+  seed: 2021
+  log_path: ./logs
+
+TRAINING:
+  num_k: 16
+  batch_size: 16
+  loss: MSE
+  optimizer: adam
+  learning_rate: 1.0e-4
+  num_epochs: 50
+  early_stopping:
+    monitor: R
+    patience: 50
+    mode: max
+
+MODEL:
+  name: STAG
+  num_genes: 250
+  emb_dim: 512
+  depth1: 2
+  num_heads1: 4
+  mlp_ratio1: 4
+  dropout1: 0.2
+  res_neighbor: (5, 5)
+  learning_rate: 0.00005
+  temperature1: 0.05
+  temperature2: 0.05
+  temperature3: 0.05
+  loss_ratio1: 0.5
+  loss_ratio2: 0.5
+  
+
+DATASET:
+  data_dir: stnet_dataset_normal_smooth
+  type: stnet
+  radius: 224
+  use_pyvips: False

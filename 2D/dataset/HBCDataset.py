@@ -1,0 +1,245 @@
+
+import glob
+import numpy as np
+import pandas
+import torch
+import random
+import os
+import json
+import torchvision.transforms as T
+from PIL import Image
+from sklearn.model_selection import KFold
+
+Image.MAX_IMAGE_PIXELS = None
+
+class HBCDataset(torch.utils.data.Dataset):
+    def __init__(self, 
+                 path='./data/Human_breast_cancer_in_situ_capturing_transcriptomics/',
+                 mode='train',
+                 k_folds=5,
+                 fold_index=0,
+                 seed=42,
+                 selected_genes=None,
+                 patch_size=224,
+                 split_save_path='./HBC_kfold_splits.json',
+                 model_name = 'STAG'):
+        if selected_genes is None:
+            selected_genes_path = 'select_genes/HBC_Selected_Genes.npy'
+            if not os.path.exists(selected_genes_path):
+                raise FileNotFoundError(f"基因文件未找到: {selected_genes_path}")
+            selected_genes = np.load(selected_genes_path, allow_pickle=True).tolist()
+
+        self._gene_id_map = None
+        if selected_genes and not str(selected_genes[0]).startswith('ENSG'):
+            import pandas as pd
+            mapping_path = 'select_genes/STNet_mapping.csv'
+            mapping_df = pd.read_csv(mapping_path)
+            symbol_to_ensg = dict(zip(mapping_df['Approved_symbol'], mapping_df['归一化ENSG']))
+            ensg_genes = []
+            for g in selected_genes:
+                if g in symbol_to_ensg:
+                    ensg_genes.append(symbol_to_ensg[g])
+                else:
+                    print(f"[HBC mapping] 警告: 基因 '{g}' 未找到ENSG映射，跳过")
+            print(f"[HBC mapping] {len(selected_genes)} symbols -> {len(ensg_genes)} ENSG IDs")
+            selected_genes = ensg_genes
+
+        self.selected_genes = selected_genes
+        self.verbose = False
+        self.mode = mode
+        self.patch_size = patch_size
+        
+        self.wsi_imgs, self.wsi_imgs2, self.wsi_imgs3 = [], [], []
+        self.st_feats, self.st_spots_pixel_map = [], []
+        
+        self.transform = T.Compose([T.ToTensor()])
+        
+        all_splits = None
+        if os.path.exists(split_save_path):
+            print(f"--- 发现已存在的划分文件: {split_save_path}，正在加载... ---")
+            with open(split_save_path, 'r') as f:
+                all_splits = json.load(f)
+            if all_splits.get('k_folds') != k_folds or all_splits.get('seed') != seed:
+                print("--- [警告] 划分文件中的参数与当前设置不符，将重新生成划分。 ---")
+                all_splits = None
+
+        if all_splits is None:
+            print(f"--- 未找到或参数不匹配，正在生成新的 {k_folds}-折 划分... ---")
+            all_wsi_files = np.array(sorted(glob.glob(os.path.join(path, '*.jpg'))))
+            if len(all_wsi_files) == 0:
+                raise FileNotFoundError(f"在路径 '{path}' 下没有找到任何 .jpg 文件。")
+
+            kf = KFold(n_splits=k_folds, shuffle=True, random_state=seed)
+            
+            all_splits = {
+                'k_folds': k_folds,
+                'seed': seed,
+                'total_files': len(all_wsi_files),
+                'folds': []
+            }
+
+            for i, (train_indices, val_indices) in enumerate(kf.split(all_wsi_files)):
+                train_files = [os.path.basename(f) for f in all_wsi_files[train_indices]]
+                val_files = [os.path.basename(f) for f in all_wsi_files[val_indices]]
+                all_splits['folds'].append({
+                    'fold_index': i,
+                    'train_files': train_files,
+                    'val_files': val_files
+                })
+            
+            with open(split_save_path, 'w') as f:
+                json.dump(all_splits, f, indent=4)
+            print(f"--- 新的划分已保存到: {split_save_path} ---")
+
+        if fold_index >= len(all_splits['folds']):
+            raise ValueError(f"fold_index ({fold_index}) 超出范围，文件中只有 {len(all_splits['folds'])} 折。")
+        
+        current_fold_info = all_splits['folds'][fold_index]
+        
+        if self.mode == 'train':
+            wsi_filenames = [os.path.join(path, f) for f in current_fold_info['train_files']]
+            print(f"--- [Fold {fold_index+1}/{k_folds}, Mode: Train] 加载 {len(wsi_filenames)} 个训练文件 ---")
+        elif self.mode == 'val':
+            wsi_filenames = [os.path.join(path, f) for f in current_fold_info['val_files']]
+            print(f"--- [Fold {fold_index+1}/{k_folds}, Mode: Val] 加载 {len(wsi_filenames)} 个验证文件 ---")
+        else:
+            raise ValueError(f"模式 '{self.mode}' 无效，请选择 'train' 或 'val'。")
+
+        for wsi_file in wsi_filenames:
+            print('正在处理:', wsi_file)
+            wsi_img = Image.open(wsi_file)
+
+            wsi_basename = os.path.splitext(wsi_file)[0]
+            if 'HE_BT' in wsi_basename:
+                wsi_basename_new = wsi_basename.replace('HE_BT', 'BC')
+            elif 'HE_BC' in wsi_basename:
+                wsi_basename_new = wsi_basename.replace('HE_BC', 'BC')
+            else:
+                wsi_basename_new = wsi_basename.replace('HE_', '')
+            
+            if 'HE_BT' in wsi_basename:
+                wsi_basename_new2 = wsi_basename.replace('HE_BT', 'spots_BT')
+            elif 'HE_BC' in wsi_basename:
+                wsi_basename_new2 = wsi_basename.replace('HE_BC', 'spots_BC')
+            else:
+                wsi_basename_new2 = wsi_basename.replace('HE_', '')
+            
+            st_feats_path = wsi_basename_new + '_stdata.tsv'
+            st_spots_pixel_map_path = wsi_basename_new2 + '.csv'
+            
+            if not (os.path.exists(st_feats_path) and os.path.exists(st_spots_pixel_map_path)):
+                print(f"    [警告] 找不到对应的特征或坐标文件，跳过: {os.path.basename(wsi_file)}")
+                continue
+
+            feats_all = pandas.read_csv(st_feats_path, sep='\t', index_col=0, header=0)
+            spots_pixel_map_all = pandas.read_csv(st_spots_pixel_map_path, sep=',', index_col=0, header=0)
+
+            for spots_pixel_map in spots_pixel_map_all.iterrows():
+                idx = spots_pixel_map[0]
+                center_x = spots_pixel_map[1]['X']
+                center_y = spots_pixel_map[1]['Y']
+                
+                crop_size_1 = self.patch_size 
+                crop_size_2 = self.patch_size * 2 
+                crop_size_3 = self.patch_size * 4 
+
+                try:
+                    def get_patch_and_resize(wsi_img, center_x, center_y, crop_s, target_s):
+                        x1, y1 = int(center_x - crop_s // 2), int(center_y - crop_s // 2)
+                        x2, y2 = int(center_x + crop_s // 2), int(center_y + crop_s // 2)
+                        img_w, img_h = wsi_img.size
+                        x1, y1 = max(0, x1), max(0, y1)
+                        x2, y2 = min(img_w, x2), min(img_h, y2)
+                        patch = wsi_img.crop((x1, y1, x2, y2))
+                        if patch.size != (target_s, target_s):
+                            patch = patch.resize((target_s, target_s), Image.BILINEAR)
+                        return patch
+
+                    patch1 = get_patch_and_resize(wsi_img, center_x, center_y, crop_size_1, self.patch_size)
+                    patch2 = get_patch_and_resize(wsi_img, center_x, center_y, crop_size_2, self.patch_size)
+                    patch3 = get_patch_and_resize(wsi_img, center_x, center_y, crop_size_3, self.patch_size)
+
+                except Exception as e:
+                    if self.verbose: print(f'裁剪图像时出错: {e}, spot: {idx}')
+                    continue
+
+                try:
+                    feats = np.array(feats_all.loc[idx][selected_genes])
+                except KeyError:
+                    if self.verbose: print(f'基因表达数据中找不到 spot: {idx}')
+                    continue
+                except Exception as e:
+                    if self.verbose: print(f'处理基因表达数据时出错: {e}, spot: {idx}')
+                    continue
+                
+                spot_sum = np.sum(feats)
+                if spot_sum == 0:
+                    if self.verbose: print(f'spot 的基因总和为0，跳过: {idx}')
+                    continue
+                
+                feats = np.log1p(feats * 1e6 / spot_sum)
+                
+                self.st_spots_pixel_map.append([idx, center_x, center_y])
+                self.st_feats.append(np.array(feats))
+                self.wsi_imgs.append(patch1)
+                self.wsi_imgs2.append(patch2)
+                self.wsi_imgs3.append(patch3)
+
+        print(f'--- [Fold {fold_index+1}/{k_folds}, Mode: {self.mode}] 加载完成，总样本数: {len(self.st_spots_pixel_map)} ---')
+        
+    def __len__(self):
+        return len(self.st_feats)
+
+    def augmentation(self, img, img2, img3):
+        if random.random() < 0.5:
+            img, img2, img3 = img.transpose(Image.FLIP_LEFT_RIGHT), img2.transpose(Image.FLIP_LEFT_RIGHT), img3.transpose(Image.FLIP_LEFT_RIGHT)
+        if random.random() < 0.5:
+            img, img2, img3 = img.transpose(Image.FLIP_TOP_BOTTOM), img2.transpose(Image.FLIP_TOP_BOTTOM), img3.transpose(Image.FLIP_TOP_BOTTOM)
+        if random.random() < 0.5:
+            degree = random.randint(0, 360)
+            img = T.RandomRotation((degree, degree), fill=255)(img)
+            img2 = T.RandomRotation((degree, degree), fill=255)(img2)
+            img3 = T.RandomRotation((degree, degree), fill=255)(img3)
+        return img, img2, img3
+    
+    def __getitem__(self, index):
+        if self.mode == 'train':
+            img, img2, img3 = self.augmentation(self.wsi_imgs[index], self.wsi_imgs2[index], self.wsi_imgs3[index])
+            return self.st_spots_pixel_map[index], self.transform(img), self.transform(img2), self.transform(img3), self.st_feats[index]
+        
+        else:
+            return self.st_spots_pixel_map[index], self.transform(self.wsi_imgs[index]), self.transform(self.wsi_imgs2[index]), self.transform(self.wsi_imgs3[index]), self.st_feats[index]
+
+if __name__ == "__main__":
+    print("--- 开始测试 HBCDataset K折交叉验证及存储功能 ---")
+    K_FOLDS = 5
+    SPLIT_FILE = './HBC_kfold_splits_test.json'
+
+    if os.path.exists(SPLIT_FILE):
+        os.remove(SPLIT_FILE)
+        print(f"已删除旧的测试文件: {SPLIT_FILE}")
+
+    for i in range(K_FOLDS):
+        print(f"\n--- 测试第 {i+1} 折 ---")
+        
+        train_dataset = HBCDataset(
+            mode='train', 
+            k_folds=K_FOLDS, 
+            fold_index=i,
+            split_save_path=SPLIT_FILE
+        )
+        print(f"第 {i+1} 折训练集样本数: {len(train_dataset)}")
+        
+        val_dataset = HBCDataset(
+            mode='val', 
+            k_folds=K_FOLDS, 
+            fold_index=i,
+            split_save_path=SPLIT_FILE
+        )
+        print(f"第 {i+1} 折验证集样本数: {len(val_dataset)}")
+        
+        if len(train_dataset) > 0:
+            spot_map, img1, img2, img3, feats = train_dataset[0]
+            print(f"抽样检查数据点: spot_map={spot_map}, img1_shape={img1.shape}, img2_shape={img2.shape}, img3_shape={img3.shape}, feats_shape={feats.shape}")
+    
+    print(f"\n--- 测试完成，请检查生成的JSON文件: {SPLIT_FILE} ---")

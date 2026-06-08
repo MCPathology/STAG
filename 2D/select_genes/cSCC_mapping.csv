@@ -1,0 +1,251 @@
+Gene Name,Classification ID,Cluster_Top_Terms
+VAPA,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+PPP4R1,-1,
+TGM1,0,Keratinocyte Differentiation (GO:0030216) | Epidermal Cell Differentiation (GO:0009913) | Skin Development (GO:0043588)
+GNAI2,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+CD82,-1,
+MYO1C,9,Supramolecular Fiber Organization (GO:0097435) | Actin Filament Organization (GO:0007015) | Intermediate Filament Organization (GO:0045109)
+DBI,-1,
+PSMA4,5,Proteasomal Protein Catabolic Process (GO:0010498) | Proteasome-Mediated Ubiquitin-Dependent Protein Catabolic Process (GO:0043161) | Ubiquitin-Dependent Protein Catabolic Process (GO:0006511)
+PPP1CA,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+HSP90AA1,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+COX6A1,6,"Mitochondrial Electron Transport, Cytochrome C To Oxygen (GO:0006123) | Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646)"
+BICD2,-1,
+PSMB4,5,Proteasomal Protein Catabolic Process (GO:0010498) | Proteasome-Mediated Ubiquitin-Dependent Protein Catabolic Process (GO:0043161) | Ubiquitin-Dependent Protein Catabolic Process (GO:0006511)
+ITGA3,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+RPL32,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPS18,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+NECTIN1,-1,
+MAPK6,-1,
+SYNCRIP,4,Negative Regulation Of mRNA Catabolic Process (GO:1902373) | mRNA Stabilization (GO:0048255) | Positive Regulation Of Translation (GO:0045727)
+FGFBP1,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+CFL1,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+CD81,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+DAZAP1,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+PDIA3,-1,
+TXNIP,0,Keratinocyte Differentiation (GO:0030216) | Epidermal Cell Differentiation (GO:0009913) | Skin Development (GO:0043588)
+CSNK2B,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+ACTN4,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+HNRNPK,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+RPL13,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+TPI1,-1,
+SURF4,-1,
+DSG3,-1,
+ARPC1A,-1,
+RAB11A,-1,
+RPS12,-1,
+STAT1,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+TOMM7,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+ADGRG1,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+LGALS7,-1,
+TRIP12,5,Proteasomal Protein Catabolic Process (GO:0010498) | Proteasome-Mediated Ubiquitin-Dependent Protein Catabolic Process (GO:0043161) | Ubiquitin-Dependent Protein Catabolic Process (GO:0006511)
+LAPTM4A,-1,
+RPL6,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+PSMD2,5,Proteasomal Protein Catabolic Process (GO:0010498) | Proteasome-Mediated Ubiquitin-Dependent Protein Catabolic Process (GO:0043161) | Ubiquitin-Dependent Protein Catabolic Process (GO:0006511)
+RPL18,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+MCL1,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+MAP2K2,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+ANXA5,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+APRT,-1,
+C4orf3,-1,
+MALL,-1,
+SLC2A4RG,-1,
+TYMP,-1,
+PDIA6,-1,
+POLR1D,-1,
+AP2M1,-1,
+CCND1,-1,
+ARHGEF12,-1,
+NPEPPS,-1,
+H3F3B,-1,
+S100A16,-1,
+PLP2,-1,
+PTRF,-1,
+SNRPD2,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+KLF5,-1,
+HNRNPD,4,Negative Regulation Of mRNA Catabolic Process (GO:1902373) | mRNA Stabilization (GO:0048255) | Positive Regulation Of Translation (GO:0045727)
+CYFIP1,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+RNH1,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+NCL,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+CNFN,-1,
+TAPBP,-1,
+TCEB2,-1,
+DHCR24,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+EIF3CL,-1,
+ZFP36L2,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+FSCN1,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+CHD4,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+KLF6,-1,
+MLF2,-1,
+FOSL2,-1,
+MT-CO3,-1,
+RPL26,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+HLA-C,-1,
+PSMB3,5,Proteasomal Protein Catabolic Process (GO:0010498) | Proteasome-Mediated Ubiquitin-Dependent Protein Catabolic Process (GO:0043161) | Ubiquitin-Dependent Protein Catabolic Process (GO:0006511)
+NOMO2,-1,
+ATP5O,-1,
+CAST,-1,
+FXYD3,-1,
+NDUFB4,7,Aerobic Respiration (GO:0009060) | Oxidative Phosphorylation (GO:0006119) | Aerobic Electron Transport Chain (GO:0019646)
+MSMO1,-1,
+HMGA1,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+RPL19,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+ANXA1,0,Keratinocyte Differentiation (GO:0030216) | Epidermal Cell Differentiation (GO:0009913) | Skin Development (GO:0043588)
+SPRR1B,0,Keratinocyte Differentiation (GO:0030216) | Epidermal Cell Differentiation (GO:0009913) | Skin Development (GO:0043588)
+C6orf62,-1,
+KIF5B,-1,
+ARPC2,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+NME1,8,Positive Regulation Of DNA Binding (GO:0043388) | Regulation Of DNA Binding (GO:0051101) | Positive Regulation Of Binding (GO:0051099)
+PSMD1,5,Proteasomal Protein Catabolic Process (GO:0010498) | Proteasome-Mediated Ubiquitin-Dependent Protein Catabolic Process (GO:0043161) | Ubiquitin-Dependent Protein Catabolic Process (GO:0006511)
+RPS23,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+CEBPB,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+MAF,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+RPS6,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+CD63,-1,
+UBE2D3,5,Proteasomal Protein Catabolic Process (GO:0010498) | Proteasome-Mediated Ubiquitin-Dependent Protein Catabolic Process (GO:0043161) | Ubiquitin-Dependent Protein Catabolic Process (GO:0006511)
+RPS19,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+MT2A,-1,
+PGK1,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+MT-CO2,-1,
+PRRC2C,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+NHP2,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+TXN,8,Positive Regulation Of DNA Binding (GO:0043388) | Regulation Of DNA Binding (GO:0051101) | Positive Regulation Of Binding (GO:0051099)
+LARP1,4,Negative Regulation Of mRNA Catabolic Process (GO:1902373) | mRNA Stabilization (GO:0048255) | Positive Regulation Of Translation (GO:0045727)
+TMEM165,-1,
+GPNMB,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+SERP1,-1,
+S100A8,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+DMKN,-1,
+GSN,9,Supramolecular Fiber Organization (GO:0097435) | Actin Filament Organization (GO:0007015) | Intermediate Filament Organization (GO:0045109)
+ETF1,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+GNAS,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+CDSN,0,Keratinocyte Differentiation (GO:0030216) | Epidermal Cell Differentiation (GO:0009913) | Skin Development (GO:0043588)
+CXCL14,-1,
+EIF5A,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+ROMO1,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+RPL7A,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+KRT6C,-1,
+DSTN,-1,
+LRP10,-1,
+EIF3B,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+VAMP8,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+NDUFB10,7,Aerobic Respiration (GO:0009060) | Oxidative Phosphorylation (GO:0006119) | Aerobic Electron Transport Chain (GO:0019646)
+NACA,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+IER2,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+SRSF5,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+MARCKS,9,Supramolecular Fiber Organization (GO:0097435) | Actin Filament Organization (GO:0007015) | Intermediate Filament Organization (GO:0045109)
+REEP5,-1,
+SAP18,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+MT-ND2,-1,
+UQCRC1,7,Aerobic Respiration (GO:0009060) | Oxidative Phosphorylation (GO:0006119) | Aerobic Electron Transport Chain (GO:0019646)
+KLK11,-1,
+EDF1,8,Positive Regulation Of DNA Binding (GO:0043388) | Regulation Of DNA Binding (GO:0051101) | Positive Regulation Of Binding (GO:0051099)
+YWHAG,-1,
+CALM1,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+KRT17,9,Supramolecular Fiber Organization (GO:0097435) | Actin Filament Organization (GO:0007015) | Intermediate Filament Organization (GO:0045109)
+RPSA,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+MT-CO1,-1,
+RPL29,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+CDC37,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+COL18A1,9,Supramolecular Fiber Organization (GO:0097435) | Actin Filament Organization (GO:0007015) | Intermediate Filament Organization (GO:0045109)
+HDLBP,-1,
+KRT6A,9,Supramolecular Fiber Organization (GO:0097435) | Actin Filament Organization (GO:0007015) | Intermediate Filament Organization (GO:0045109)
+PTGES3,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+RPS2,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+ATP5I,-1,
+ILF3,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+PSAP,-1,
+JAG1,0,Keratinocyte Differentiation (GO:0030216) | Epidermal Cell Differentiation (GO:0009913) | Skin Development (GO:0043588)
+LAMP1,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+RPL36,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPS27A,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+GNB1,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+NPM1,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+RPLP2,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+NDUFS5,7,Aerobic Respiration (GO:0009060) | Oxidative Phosphorylation (GO:0006119) | Aerobic Electron Transport Chain (GO:0019646)
+NDUFB1,7,Aerobic Respiration (GO:0009060) | Oxidative Phosphorylation (GO:0006119) | Aerobic Electron Transport Chain (GO:0019646)
+FLNB,-1,
+PSMC3,5,Proteasomal Protein Catabolic Process (GO:0010498) | Proteasome-Mediated Ubiquitin-Dependent Protein Catabolic Process (GO:0043161) | Ubiquitin-Dependent Protein Catabolic Process (GO:0006511)
+TMED10,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+MIDN,-1,
+VCP,5,Proteasomal Protein Catabolic Process (GO:0010498) | Proteasome-Mediated Ubiquitin-Dependent Protein Catabolic Process (GO:0043161) | Ubiquitin-Dependent Protein Catabolic Process (GO:0006511)
+CSTB,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+QARS,-1,
+FABP5,-1,
+CAPN1,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+RPS8,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+POLR2L,-1,
+TAGLN2,9,Supramolecular Fiber Organization (GO:0097435) | Actin Filament Organization (GO:0007015) | Intermediate Filament Organization (GO:0045109)
+COX8A,6,"Mitochondrial Electron Transport, Cytochrome C To Oxygen (GO:0006123) | Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646)"
+HLA-E,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+PFDN5,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+HMGB1,8,Positive Regulation Of DNA Binding (GO:0043388) | Regulation Of DNA Binding (GO:0051101) | Positive Regulation Of Binding (GO:0051099)
+ARF6,-1,
+DSC3,-1,
+DSC2,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+ZFP36L1,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+EIF4G1,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+CD9,-1,
+FTL,-1,
+COL7A1,-1,
+H1FX,-1,
+SLC7A5,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+KDELR1,-1,
+RPS3A,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+SEPW1,-1,
+TPSB2,-1,
+RPL28,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+KHDRBS1,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+ACTR2,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+APP,9,Supramolecular Fiber Organization (GO:0097435) | Actin Filament Organization (GO:0007015) | Intermediate Filament Organization (GO:0045109)
+PTMA,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+SON,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+PPL,-1,
+SERF2,-1,
+GRN,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+VIM,9,Supramolecular Fiber Organization (GO:0097435) | Actin Filament Organization (GO:0007015) | Intermediate Filament Organization (GO:0045109)
+MAFB,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+CRCT1,-1,
+KTN1,-1,
+PSMB6,5,Proteasomal Protein Catabolic Process (GO:0010498) | Proteasome-Mediated Ubiquitin-Dependent Protein Catabolic Process (GO:0043161) | Ubiquitin-Dependent Protein Catabolic Process (GO:0006511)
+STUB1,5,Proteasomal Protein Catabolic Process (GO:0010498) | Proteasome-Mediated Ubiquitin-Dependent Protein Catabolic Process (GO:0043161) | Ubiquitin-Dependent Protein Catabolic Process (GO:0006511)
+RPS14,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+LAMP2,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+VMP1,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+BCAP31,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+IFI16,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+PTP4A1,-1,
+TMA7,-1,
+ATP5J2,-1,
+CANX,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+SRSF11,-1,
+ITGAV,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+FLNA,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+ITGA6,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+COX7C,6,"Mitochondrial Electron Transport, Cytochrome C To Oxygen (GO:0006123) | Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646)"
+DST,-1,
+MAL2,-1,
+ACTN1,9,Supramolecular Fiber Organization (GO:0097435) | Actin Filament Organization (GO:0007015) | Intermediate Filament Organization (GO:0045109)
+RPL9,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL36A,-1,
+ZNF207,9,Supramolecular Fiber Organization (GO:0097435) | Actin Filament Organization (GO:0007015) | Intermediate Filament Organization (GO:0045109)
+TMED9,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+RNF187,5,Proteasomal Protein Catabolic Process (GO:0010498) | Proteasome-Mediated Ubiquitin-Dependent Protein Catabolic Process (GO:0043161) | Ubiquitin-Dependent Protein Catabolic Process (GO:0006511)
+PSMA7,5,Proteasomal Protein Catabolic Process (GO:0010498) | Proteasome-Mediated Ubiquitin-Dependent Protein Catabolic Process (GO:0043161) | Ubiquitin-Dependent Protein Catabolic Process (GO:0006511)
+EIF3H,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+RPS25,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+WNK1,-1,
+MYL12A,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+RPS26,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+FUS,9,Supramolecular Fiber Organization (GO:0097435) | Actin Filament Organization (GO:0007015) | Intermediate Filament Organization (GO:0045109)
+LCE3D,-1,
+CNDP2,-1,
+MYL12B,-1,
+IVL,0,Keratinocyte Differentiation (GO:0030216) | Epidermal Cell Differentiation (GO:0009913) | Skin Development (GO:0043588)
+IGFBP4,-1,
+RPS5,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+RPL11,2,Cytoplasmic Translation (GO:0002181) | Peptide Biosynthetic Process (GO:0043043) | Macromolecule Biosynthetic Process (GO:0009059)
+MKNK2,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)
+RACK1,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+FTH1,3,Regulation Of Apoptotic Process (GO:0042981) | Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Programmed Cell Death (GO:0043069)
+EEF1B2,1,Autophagosome Membrane Docking (GO:0016240) | Positive Regulation Of Lamellipodium Assembly (GO:0010592) | Positive Regulation Of Lamellipodium Organization (GO:1902745)

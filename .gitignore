@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# Data & raw datasets (download separately)
+2D/data/
+3D/**/data/
+*.h5ad
+*.tif
+*.tiff
+*.svs
+
+# Model checkpoints & weights
+weights/
+*.ckpt
+*.pth
+*.pt
+2D/Geneformer/
+
+# Outputs
+logs/
+results/
+*_results/
+ablation_*_results/
+runs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

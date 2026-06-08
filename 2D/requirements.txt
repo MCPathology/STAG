@@ -1,0 +1,33 @@
+# ===== Core (required to train/eval STAG) =====
+torch
+torchvision
+torch-geometric
+einops
+numpy
+pandas
+scipy
+scikit-learn
+tqdm
+Pillow
+tensorboard
+wget
+
+# ===== Data loading (HEST / WSI / h5ad) =====
+scanpy
+anndata
+h5py
+openslide-python
+
+# ===== Geneformer expression-encoder ablation =====
+transformers
+mygene
+huggingface_hub
+datasets
+
+# ===== Optional image foundation encoders (UNI / CONCH ablation) =====
+timm
+open_clip_torch
+# conch   # install from https://github.com/mahmoodlab/CONCH
+
+# ===== Gene text encoding (OmiCLIP / Loki preprocessing) =====
+# loki   # install from https://github.com/GuangyuWangLab2021/Loki

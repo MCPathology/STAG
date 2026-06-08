@@ -1,0 +1,251 @@
+Gene Name,Classification ID,Cluster_Top_Terms
+HLA-C,6,Positive Regulation Of T Cell Mediated Cytotoxicity (GO:0001916) | Positive Regulation Of Leukocyte Mediated Cytotoxicity (GO:0001912) | Antigen Processing And Presentation Of Endogenous Peptide Antigen (GO:0002483)
+DDX5,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+TSPO,8,Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Cell Population Proliferation (GO:0008285) | Negative Regulation Of Cellular Process (GO:0048523)
+PRPF19,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+HLA-DRA,6,Positive Regulation Of T Cell Mediated Cytotoxicity (GO:0001916) | Positive Regulation Of Leukocyte Mediated Cytotoxicity (GO:0001912) | Antigen Processing And Presentation Of Endogenous Peptide Antigen (GO:0002483)
+LMNA,8,Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Cell Population Proliferation (GO:0008285) | Negative Regulation Of Cellular Process (GO:0048523)
+APOC1,-1,
+HDLBP,-1,
+PSMB4,-1,
+CIB1,5,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+NECTIN2,6,Positive Regulation Of T Cell Mediated Cytotoxicity (GO:0001916) | Positive Regulation Of Leukocyte Mediated Cytotoxicity (GO:0001912) | Antigen Processing And Presentation Of Endogenous Peptide Antigen (GO:0002483)
+C19orf53,-1,
+ENSA,-1,
+CLDN7,-1,
+CST3,2,Positive Regulation Of Intracellular Signal Transduction (GO:1902533) | Positive Regulation Of Cell Migration (GO:0030335) | Supramolecular Fiber Organization (GO:0097435)
+PRDX6,-1,
+ATP5G2,-1,
+CDC37,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+UBC,-1,
+SLC44A2,2,Positive Regulation Of Intracellular Signal Transduction (GO:1902533) | Positive Regulation Of Cell Migration (GO:0030335) | Supramolecular Fiber Organization (GO:0097435)
+GIPC1,-1,
+MAPKAPK2,-1,
+PFDN5,2,Positive Regulation Of Intracellular Signal Transduction (GO:1902533) | Positive Regulation Of Cell Migration (GO:0030335) | Supramolecular Fiber Organization (GO:0097435)
+TCEB2,-1,
+COL18A1,8,Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Cell Population Proliferation (GO:0008285) | Negative Regulation Of Cellular Process (GO:0048523)
+CLDN3,8,Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Cell Population Proliferation (GO:0008285) | Negative Regulation Of Cellular Process (GO:0048523)
+SNRPB,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+H1FX,-1,
+MZT2B,-1,
+TMED9,-1,
+CLIC1,-1,
+UBA52,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+SCAND1,-1,
+LAMTOR4,2,Positive Regulation Of Intracellular Signal Transduction (GO:1902533) | Positive Regulation Of Cell Migration (GO:0030335) | Supramolecular Fiber Organization (GO:0097435)
+FKBP2,-1,
+SEPW1,-1,
+TRAF4,-1,
+NDUFB2,7,Proton Motive Force-Driven Mitochondrial ATP Synthesis (GO:0042776) | Aerobic Respiration (GO:0009060) | Proton Motive Force-Driven ATP Synthesis (GO:0015986)
+H3F3B,-1,
+S100A6,-1,
+NDUFB11,7,Proton Motive Force-Driven Mitochondrial ATP Synthesis (GO:0042776) | Aerobic Respiration (GO:0009060) | Proton Motive Force-Driven ATP Synthesis (GO:0015986)
+TUFM,-1,
+FXYD3,-1,
+SSR4,-1,
+NRBP1,-1,
+YIPF2,-1,
+PPP2R1A,-1,
+GRB7,0,Negative Regulation Of Amide Metabolic Process (GO:0034249) | Negative Regulation Of Macromolecule Biosynthetic Process (GO:0010558) | Negative Regulation Of Translation (GO:0017148)
+ATP5E,-1,
+PSMB7,-1,
+SLC9A3R1,8,Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Cell Population Proliferation (GO:0008285) | Negative Regulation Of Cellular Process (GO:0048523)
+WDR34,-1,
+BSG,-1,
+ERBB2,5,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+VIM,2,Positive Regulation Of Intracellular Signal Transduction (GO:1902533) | Positive Regulation Of Cell Migration (GO:0030335) | Supramolecular Fiber Organization (GO:0097435)
+NUMA1,3,Positive Regulation Of Cellular Process (GO:0048522) | Positive Regulation Of Cell Population Proliferation (GO:0008284) | Regulation Of Cell Population Proliferation (GO:0042127)
+MAP2K2,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+COPS9,3,Positive Regulation Of Cellular Process (GO:0048522) | Positive Regulation Of Cell Population Proliferation (GO:0008284) | Regulation Of Cell Population Proliferation (GO:0042127)
+MAGED1,5,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+PHB,-1,
+IDH2,-1,
+CRIP2,-1,
+COPE,-1,
+AUP1,-1,
+NUPR1,5,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+ELOVL1,-1,
+S100A11,8,Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Cell Population Proliferation (GO:0008285) | Negative Regulation Of Cellular Process (GO:0048523)
+COX4I1,1,Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646) | Mitochondrial ATP Synthesis Coupled Electron Transport (GO:0042775)
+ACTG1,-1,
+XBP1,5,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+MMACHC,-1,
+COL1A1,2,Positive Regulation Of Intracellular Signal Transduction (GO:1902533) | Positive Regulation Of Cell Migration (GO:0030335) | Supramolecular Fiber Organization (GO:0097435)
+AP2S1,-1,
+HNRNPA2B1,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+STUB1,4,Positive Regulation Of Protein Metabolic Process (GO:0051247) | Positive Regulation Of Protein Catabolic Process (GO:0045732) | Regulation Of Protein Catabolic Process (GO:0042176)
+TAGLN,-1,
+NDUFS6,7,Proton Motive Force-Driven Mitochondrial ATP Synthesis (GO:0042776) | Aerobic Respiration (GO:0009060) | Proton Motive Force-Driven ATP Synthesis (GO:0015986)
+MDK,2,Positive Regulation Of Intracellular Signal Transduction (GO:1902533) | Positive Regulation Of Cell Migration (GO:0030335) | Supramolecular Fiber Organization (GO:0097435)
+UBB,5,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+OAZ1,4,Positive Regulation Of Protein Metabolic Process (GO:0051247) | Positive Regulation Of Protein Catabolic Process (GO:0045732) | Regulation Of Protein Catabolic Process (GO:0042176)
+BEST1,-1,
+KDELR2,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+EDF1,-1,
+CD24,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+CCND1,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+ATOX1,-1,
+RER1,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+HSP90B1,5,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+CTSB,5,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+SNRNP200,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+C14orf2,-1,
+FTL,-1,
+PPP1CA,-1,
+CCT7,-1,
+P4HB,3,Positive Regulation Of Cellular Process (GO:0048522) | Positive Regulation Of Cell Population Proliferation (GO:0008284) | Regulation Of Cell Population Proliferation (GO:0042127)
+HSBP1,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+SDF4,-1,
+SNRPD2,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+COX8A,1,Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646) | Mitochondrial ATP Synthesis Coupled Electron Transport (GO:0042775)
+TAPBP,-1,
+SNF8,4,Positive Regulation Of Protein Metabolic Process (GO:0051247) | Positive Regulation Of Protein Catabolic Process (GO:0045732) | Regulation Of Protein Catabolic Process (GO:0042176)
+APOE,4,Positive Regulation Of Protein Metabolic Process (GO:0051247) | Positive Regulation Of Protein Catabolic Process (GO:0045732) | Regulation Of Protein Catabolic Process (GO:0042176)
+PTMA,5,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+CYBA,-1,
+VCP,4,Positive Regulation Of Protein Metabolic Process (GO:0051247) | Positive Regulation Of Protein Catabolic Process (GO:0045732) | Regulation Of Protein Catabolic Process (GO:0042176)
+ECHS1,-1,
+ARPC1B,-1,
+ROMO1,3,Positive Regulation Of Cellular Process (GO:0048522) | Positive Regulation Of Cell Population Proliferation (GO:0008284) | Regulation Of Cell Population Proliferation (GO:0042127)
+ZYX,-1,
+UQCRQ,1,Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646) | Mitochondrial ATP Synthesis Coupled Electron Transport (GO:0042775)
+ACTB,3,Positive Regulation Of Cellular Process (GO:0048522) | Positive Regulation Of Cell Population Proliferation (GO:0008284) | Regulation Of Cell Population Proliferation (GO:0042127)
+CYC1,1,Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646) | Mitochondrial ATP Synthesis Coupled Electron Transport (GO:0042775)
+PRRC2A,-1,
+INF2,-1,
+MIDN,-1,
+SPINT2,-1,
+TPI1,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+PTBP1,-1,
+NDUFA4,1,Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646) | Mitochondrial ATP Synthesis Coupled Electron Transport (GO:0042775)
+PRSS8,-1,
+PTPRF,-1,
+GNAS,-1,
+PKM,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+PLD3,-1,
+SLC39A1,-1,
+HSPG2,-1,
+MGP,-1,
+RALY,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+COX7C,1,Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646) | Mitochondrial ATP Synthesis Coupled Electron Transport (GO:0042775)
+LAPTM5,2,Positive Regulation Of Intracellular Signal Transduction (GO:1902533) | Positive Regulation Of Cell Migration (GO:0030335) | Supramolecular Fiber Organization (GO:0097435)
+MT2A,-1,
+CCT3,-1,
+NENF,-1,
+UQCR11,1,Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646) | Mitochondrial ATP Synthesis Coupled Electron Transport (GO:0042775)
+TIMP1,3,Positive Regulation Of Cellular Process (GO:0048522) | Positive Regulation Of Cell Population Proliferation (GO:0008284) | Regulation Of Cell Population Proliferation (GO:0042127)
+ATP6V0B,-1,
+ARPC4,-1,
+NME3,-1,
+PRKCSH,-1,
+ARRDC1,-1,
+KRT8,-1,
+CTBP1,8,Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Cell Population Proliferation (GO:0008285) | Negative Regulation Of Cellular Process (GO:0048523)
+RHOA,8,Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Cell Population Proliferation (GO:0008285) | Negative Regulation Of Cellular Process (GO:0048523)
+MYO1C,8,Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Cell Population Proliferation (GO:0008285) | Negative Regulation Of Cellular Process (GO:0048523)
+HDGF,-1,
+GPX4,5,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+FTH1,8,Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Cell Population Proliferation (GO:0008285) | Negative Regulation Of Cellular Process (GO:0048523)
+ATP5J2,-1,
+JUNB,8,Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Cell Population Proliferation (GO:0008285) | Negative Regulation Of Cellular Process (GO:0048523)
+PEBP1,-1,
+GAPDH,0,Negative Regulation Of Amide Metabolic Process (GO:0034249) | Negative Regulation Of Macromolecule Biosynthetic Process (GO:0010558) | Negative Regulation Of Translation (GO:0017148)
+GLTSCR2,-1,
+BRD2,-1,
+KRT7,-1,
+TMEM219,-1,
+HLA-A,6,Positive Regulation Of T Cell Mediated Cytotoxicity (GO:0001916) | Positive Regulation Of Leukocyte Mediated Cytotoxicity (GO:0001912) | Antigen Processing And Presentation Of Endogenous Peptide Antigen (GO:0002483)
+FN1,8,Regulation Of Cell Population Proliferation (GO:0042127) | Negative Regulation Of Cell Population Proliferation (GO:0008285) | Negative Regulation Of Cellular Process (GO:0048523)
+EIF3K,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+FBXW5,-1,
+LGALS1,5,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+CTSD,5,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+ENO1,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+NDUFB9,7,Proton Motive Force-Driven Mitochondrial ATP Synthesis (GO:0042776) | Aerobic Respiration (GO:0009060) | Proton Motive Force-Driven ATP Synthesis (GO:0015986)
+KDELR1,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+SLC2A4RG,-1,
+RABAC1,-1,
+EIF3B,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+JTB,-1,
+C12orf57,-1,
+STARD3,-1,
+HSP90AA1,4,Positive Regulation Of Protein Metabolic Process (GO:0051247) | Positive Regulation Of Protein Catabolic Process (GO:0045732) | Regulation Of Protein Catabolic Process (GO:0042176)
+ATP5I,-1,
+GNAI2,3,Positive Regulation Of Cellular Process (GO:0048522) | Positive Regulation Of Cell Population Proliferation (GO:0008284) | Regulation Of Cell Population Proliferation (GO:0042127)
+AES,-1,
+UBL5,-1,
+LMAN2,-1,
+MCL1,5,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+AEBP1,-1,
+EEF1D,2,Positive Regulation Of Intracellular Signal Transduction (GO:1902533) | Positive Regulation Of Cell Migration (GO:0030335) | Supramolecular Fiber Organization (GO:0097435)
+GUK1,-1,
+FAU,-1,
+ATP5J,-1,
+PSMD2,-1,
+CISD3,-1,
+HNRNPAB,-1,
+BGN,-1,
+TUBA1B,-1,
+HLA-B,6,Positive Regulation Of T Cell Mediated Cytotoxicity (GO:0001916) | Positive Regulation Of Leukocyte Mediated Cytotoxicity (GO:0001912) | Antigen Processing And Presentation Of Endogenous Peptide Antigen (GO:0002483)
+PFN1,2,Positive Regulation Of Intracellular Signal Transduction (GO:1902533) | Positive Regulation Of Cell Migration (GO:0030335) | Supramolecular Fiber Organization (GO:0097435)
+CHCHD2,-1,
+SEPT9,-1,
+NR2F6,-1,
+ZBTB7B,-1,
+PDXK,-1,
+MGAT1,-1,
+ATP5B,-1,
+TPT1,5,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+EIF4G2,3,Positive Regulation Of Cellular Process (GO:0048522) | Positive Regulation Of Cell Population Proliferation (GO:0008284) | Regulation Of Cell Population Proliferation (GO:0042127)
+DNAJB1,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+CD81,3,Positive Regulation Of Cellular Process (GO:0048522) | Positive Regulation Of Cell Population Proliferation (GO:0008284) | Regulation Of Cell Population Proliferation (GO:0042127)
+NDUFA10,7,Proton Motive Force-Driven Mitochondrial ATP Synthesis (GO:0042776) | Aerobic Respiration (GO:0009060) | Proton Motive Force-Driven ATP Synthesis (GO:0015986)
+PPP1R14B,-1,
+RHOC,2,Positive Regulation Of Intracellular Signal Transduction (GO:1902533) | Positive Regulation Of Cell Migration (GO:0030335) | Supramolecular Fiber Organization (GO:0097435)
+OST4,-1,
+SLC25A6,-1,
+HSP90AB1,2,Positive Regulation Of Intracellular Signal Transduction (GO:1902533) | Positive Regulation Of Cell Migration (GO:0030335) | Supramolecular Fiber Organization (GO:0097435)
+MRPS34,-1,
+PRMT1,3,Positive Regulation Of Cellular Process (GO:0048522) | Positive Regulation Of Cell Population Proliferation (GO:0008284) | Regulation Of Cell Population Proliferation (GO:0042127)
+CD63,-1,
+EIF4G1,3,Positive Regulation Of Cellular Process (GO:0048522) | Positive Regulation Of Cell Population Proliferation (GO:0008284) | Regulation Of Cell Population Proliferation (GO:0042127)
+CAPZB,-1,
+CALR,3,Positive Regulation Of Cellular Process (GO:0048522) | Positive Regulation Of Cell Population Proliferation (GO:0008284) | Regulation Of Cell Population Proliferation (GO:0042127)
+MZT2A,-1,
+TUBB,-1,
+CFL1,5,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+NPDC1,-1,
+SRRM2,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+COL3A1,-1,
+PFKL,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+AKT1,5,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+RACK1,0,Negative Regulation Of Amide Metabolic Process (GO:0034249) | Negative Regulation Of Macromolecule Biosynthetic Process (GO:0010558) | Negative Regulation Of Translation (GO:0017148)
+RRBP1,-1,
+APRT,-1,
+CALM3,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+DDB1,4,Positive Regulation Of Protein Metabolic Process (GO:0051247) | Positive Regulation Of Protein Catabolic Process (GO:0045732) | Regulation Of Protein Catabolic Process (GO:0042176)
+KRT19,-1,
+CTTN,-1,
+CD99,-1,
+HES4,-1,
+CENPB,-1,
+MUC1,-1,
+SEC61A1,-1,
+ATP1A1,-1,
+COX6B1,1,Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646) | Mitochondrial ATP Synthesis Coupled Electron Transport (GO:0042775)
+PTOV1,-1,
+UQCR10,1,Energy Derivation By Oxidation Of Organic Compounds (GO:0015980) | Aerobic Electron Transport Chain (GO:0019646) | Mitochondrial ATP Synthesis Coupled Electron Transport (GO:0042775)
+CERS4,-1,
+EEF2,2,Positive Regulation Of Intracellular Signal Transduction (GO:1902533) | Positive Regulation Of Cell Migration (GO:0030335) | Supramolecular Fiber Organization (GO:0097435)
+SERF2,-1,
+GRINA,-1,
+BCAP31,2,Positive Regulation Of Intracellular Signal Transduction (GO:1902533) | Positive Regulation Of Cell Migration (GO:0030335) | Supramolecular Fiber Organization (GO:0097435)
+LSM4,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+NDUFS5,7,Proton Motive Force-Driven Mitochondrial ATP Synthesis (GO:0042776) | Aerobic Respiration (GO:0009060) | Proton Motive Force-Driven ATP Synthesis (GO:0015986)
+LSM7,9,"RNA Splicing, Via Transesterification Reactions With Bulged Adenosine As Nucleophile (GO:0000377) | mRNA Splicing, Via Spliceosome (GO:0000398) | mRNA Processing (GO:0006397)"
+KRT18,5,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+TIMM13,-1,
+MFSD12,-1,
+SH3BGRL3,-1,
+SHC1,5,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
+ARHGDIA,5,Regulation Of Apoptotic Process (GO:0042981) | Negative Regulation Of Programmed Cell Death (GO:0043069) | Negative Regulation Of Apoptotic Process (GO:0043066)
