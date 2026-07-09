@@ -339,6 +339,22 @@ as external archives rather than committed directly to GitHub. For code-only
 releases, keep the folder structure above and place downloaded data in the
 corresponding paths before training.
 
+The full data archive is stored externally as:
+
+```text
+Aliyun Drive: /data/zyc-MEDIA-Re.zip
+```
+
+See [`DATA.md`](DATA.md) for the detailed data restoration guide. On the server,
+the archive can be restored with:
+
+```bash
+bash scripts/prepare_media_data_from_aliyunpan.sh \
+  /mnt/pfs-gv8sxa/tts/dhg/yg/zyc/aliyunpan-v0.4.0-linux-amd64/aliyunpan \
+  /data/zyc-MEDIA-Re.zip \
+  .
+```
+
 ## Citation
 
 If you find this repository useful, please cite:

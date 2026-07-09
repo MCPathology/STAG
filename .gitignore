@@ -6,11 +6,19 @@ __pycache__/
 
 # Data & raw datasets (download separately)
 2D/data/
+3D/*_dataset*/
+3D/*_dataset_*/
+3D/*_dataset_normal_smooth/
+3D/*_heg250_dataset/
 3D/**/data/
 *.h5ad
 *.tif
 *.tiff
 *.svs
+*.zip
+*.tar
+*.tar.gz
+*.tgz
 
 # Model checkpoints & weights
 weights/
