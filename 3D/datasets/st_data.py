@@ -85,6 +85,19 @@ class STDataset(BaselineDataset):
         
         if self.data == 'mouse':
             names = ['A','B','C','D']
+
+        image_dir = os.path.join(self.data_dir, 'cropped_imgs')
+        if os.path.isdir(image_dir):
+            available_prefixes = {
+                os.path.basename(path)[0]
+                for path in glob(os.path.join(image_dir, '*.png'))
+                if os.path.basename(path)
+            }
+            filtered_names = [name for name in names if name in available_prefixes]
+            missing_names = [name for name in names if name not in available_prefixes]
+            if filtered_names and len(filtered_names) != len(names):
+                print(f"Warning: filtered {self.data} folds to slices with cropped images. Missing: {missing_names}")
+                names = filtered_names
         
         te_names = []
         if self.data == 'her2st':

@@ -6,7 +6,10 @@ import os
 import argparse
 import numpy as np
 import pandas as pd
-from torch.utils.tensorboard.writer import SummaryWriter
+try:
+    from torch.utils.tensorboard.writer import SummaryWriter
+except ModuleNotFoundError:
+    SummaryWriter = None
 import time
 import json
 from scipy.stats import pearsonr
@@ -217,7 +220,7 @@ def main():
 
         optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
         mse_loss_fn = torch.nn.MSELoss()
-        writer = SummaryWriter(log_dir=os.path.join(log_dir, f'fold_{fold+1}')) if args.save_tensorboard else NullSummaryWriter()
+        writer = SummaryWriter(log_dir=os.path.join(log_dir, f'fold_{fold+1}')) if args.save_tensorboard and SummaryWriter is not None else NullSummaryWriter()
 
         best_fold_pcc = -1.0
         best_fold_metrics = {}

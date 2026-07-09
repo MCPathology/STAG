@@ -5,7 +5,10 @@ import os
 import argparse
 import numpy as np
 import pandas as pd
-from torch.utils.tensorboard.writer import SummaryWriter
+try:
+    from torch.utils.tensorboard.writer import SummaryWriter
+except ModuleNotFoundError:
+    SummaryWriter = None
 import time
 import json
 from scipy.stats import pearsonr
@@ -17,7 +20,6 @@ from models.models.model_Hypergraph_Text import STAG, contrastive_loss
 from dataset.TextcSCCDataset import cSCCDataset as Text_cSCC_Dataset
 from dataset.TextHER2Dataset import HER2Dataset as Text_HER2_Dataset
 from dataset.TextHBCDataset import HBCDataset as Text_HBC_Dataset
-from dataset.TextHESTDataset import HESTDataset as Text_HEST_Dataset, get_full_kfold_splits
 
 from dataset.cSCCDataset import cSCCDataset as Original_cSCCDataset
 from dataset.HER2Dataset import HER2Dataset as Original_HER2Dataset
@@ -318,7 +320,7 @@ def main():
         scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda)
 
         mse_loss_fn = torch.nn.MSELoss()
-        writer = SummaryWriter(log_dir=os.path.join(log_dir, f'fold_{fold+1}')) if args.save_tensorboard else NullSummaryWriter()
+        writer = SummaryWriter(log_dir=os.path.join(log_dir, f'fold_{fold+1}')) if args.save_tensorboard and SummaryWriter is not None else NullSummaryWriter()
 
         best_fold_pcc = -1.0
         best_fold_metrics = {}

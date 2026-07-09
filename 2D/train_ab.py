@@ -5,7 +5,10 @@ import os
 import argparse
 import numpy as np
 import pandas as pd
-from torch.utils.tensorboard.writer import SummaryWriter
+try:
+    from torch.utils.tensorboard.writer import SummaryWriter
+except ModuleNotFoundError:
+    SummaryWriter = None
 import time
 import json
 from scipy.stats import pearsonr
@@ -17,7 +20,11 @@ from models.models.model_Hypergraph_Text import STAG, contrastive_loss
 from dataset.TextcSCCDataset import cSCCDataset as Text_cSCC_Dataset
 from dataset.TextHER2Dataset import HER2Dataset as Text_HER2_Dataset
 from dataset.TextHBCDataset import HBCDataset as Text_HBC_Dataset
-from dataset.TextHESTDataset import HESTDataset as Text_HEST_Dataset, get_full_kfold_splits
+try:
+    from dataset.TextHESTDataset import HESTDataset as Text_HEST_Dataset, get_full_kfold_splits
+except ModuleNotFoundError:
+    Text_HEST_Dataset = None
+    get_full_kfold_splits = None
 
 
 from dataset.cSCCDataset import cSCCDataset as Original_cSCCDataset
@@ -64,7 +71,7 @@ def parse_args():
     parser.add_argument('--recon_weight', type=float, default=1.0, help="重建损失权重")
     parser.add_argument('--temp1', type=float, default=0.05, help="目标Spot对比损失温度")
     parser.add_argument('--temp2', type=float, default=0.05, help="邻域对比损失温度")
-    parser.add_argument('--select_fold', type=int, default=0, help="邻域对比损失温度")
+    parser.add_argument('--select_fold', type=int, default=-1, help="指定运行的折数 (-1=全部)")
     parser.add_argument('--ablation_mode', type=str, default='full',
                         choices=['full', 'query_no_ca_cl', 'query_with_ca', 'query_with_cl', 'query_with_ca_cl',
                                  'full_no_ca_cl', 'full_with_ca', 'full_with_cl', 'full_with_ca_cl'],
@@ -237,6 +244,8 @@ def main():
     is_hest = args.data_name.startswith('HEST_')
     
     if is_hest:
+        if Text_HEST_Dataset is None or get_full_kfold_splits is None:
+            raise ImportError("HEST training requires openslide/open-slide libraries. Install the HEST optional dependencies before using HEST_* datasets.")
         print(f"--- 检测到 HEST 数据集: {args.data_name} ---")
         hest_subset_name = args.data_name.replace('HEST_', '')
         data_path = os.path.join(DATA_PATHS['HEST_BASE'], hest_subset_name) if hest_subset_name in ['her2st', 'kidney', 'mouse_brain', 'PRAD', 'Liver', 'Lung'] else os.path.join(DATA_PATHS['HEST_BASE'], f'hest_data_{hest_subset_name.upper()}')
@@ -265,6 +274,8 @@ def main():
     
     fold_results = []
     for fold, plan in enumerate(kfold_split_plans):
+        if args.select_fold >= 0 and fold != args.select_fold:
+            continue
         print(f"\n{'='*25} FOLD {fold + 1}/{len(kfold_split_plans)} {'='*25}")
         
         num_genes = 250
@@ -326,7 +337,7 @@ def main():
 
         optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
         mse_loss_fn = torch.nn.MSELoss()
-        writer = SummaryWriter(log_dir=os.path.join(log_dir, f'fold_{fold+1}')) if args.save_tensorboard else NullSummaryWriter()
+        writer = SummaryWriter(log_dir=os.path.join(log_dir, f'fold_{fold+1}')) if args.save_tensorboard and SummaryWriter is not None else NullSummaryWriter()
         
         best_fold_pcc = -1.0
         best_fold_metrics = {}
