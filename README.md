@@ -12,6 +12,23 @@ repository contains two training pipelines:
 For implementation details, see [`2D/README.md`](2D/README.md),
 [`3D/README.md`](3D/README.md), and [`DOCS.md`](DOCS.md).
 
+![STAG framework overview](assets/MEDIA_MainArch.png)
+
+## Framework Overview
+
+STAG consists of two key components: a **Query branch** and a **Neighbor
+branch**. In the 2D setting, the Query branch processes the target pathology
+patch and its paired spatial transcriptomics spot, while the Neighbor branch
+takes neighboring regions as input. Intra-slice relationships are modeled with
+hypergraphs. The two branches further use cross-attention and contrastive
+learning losses (`L_s` and `L_g`) to refine and align cross-modal features
+between histology and gene expression.
+
+During inference, only the pathology encoder is used, so STAG predicts gene
+expression directly from the histology image. The original PDF version of the
+main architecture figure is available at
+[`assets/MEDIA_MainArch.pdf`](assets/MEDIA_MainArch.pdf).
+
 ## Contents
 
 1. [Pipeline Overview](#pipeline-overview)
