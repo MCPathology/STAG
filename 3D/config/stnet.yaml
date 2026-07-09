@@ -3,7 +3,7 @@ GENERAL:
   log_path: ./logs
 
 TRAINING:
-  num_k: 15
+  num_k: 23
   batch_size: 16
   loss: MSE
   optimizer: adam

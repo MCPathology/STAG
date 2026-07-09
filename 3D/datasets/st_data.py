@@ -72,7 +72,10 @@ class STDataset(BaselineDataset):
             names = ['A','B','C','D','E','F','G','H']
             
         if self.data == 'stnet':
-            names = ['E','F','I','J','L','M','N','O','P','R','S','T','U','V','W']
+            names = [
+                'A','B','C','D','E','F','G','H','I','J','K','L',
+                'M','N','O','P','Q','R','S','T','U','V','W'
+            ]
         
         if self.data == 'skin':
             names = ['A','B','C','D']
@@ -89,8 +92,8 @@ class STDataset(BaselineDataset):
             te_names = [i for i in names if patients[fold] in i]
         
         if self.data == 'stnet':
-            patients = names = ['E','F','I','J','L','M','N','O','P','R','S','T','U','V','W']
-            num_folds = 15
+            patients = names
+            num_folds = len(patients)
             fold_size = len(patients) // num_folds
             start_idx = fold * fold_size
             end_idx = start_idx + fold_size if fold < num_folds - 1 else len(patients)
