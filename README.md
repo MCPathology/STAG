@@ -1,8 +1,5 @@
 # STAG: Biologically Guided Spatial Transcriptomics Prediction via Hypergraph Learning
 
-> Under review. Dataset download links will be made publicly available upon
-> acceptance of the manuscript.
-
 STAG predicts spatial gene expression from histopathology images. This
 repository contains two training pipelines:
 
@@ -34,7 +31,7 @@ expression directly from the histology image.
 3. [2D Pipeline](#2d-pipeline)
 4. [3D Pipeline](#3d-pipeline)
 5. [Outputs](#outputs)
-6. [Data Release Note](#data-release-note)
+6. [Data Download](#data-download)
 7. [Citation](#citation)
 
 ## Pipeline Overview
@@ -111,15 +108,18 @@ Gene panels and gene-text embeddings are loaded from `2D/select_genes/`.
 The following datasets are configured for the text-guided `train_STAG.py`
 entry.
 
-| Dataset | `--data_name` | Data folder | Required files | Gene/text files | Status |
-|---|---|---|---|---|---|
-| cSCC | `cSCC` | `2D/data/GSE144240/` | `*.jpg`, `*_stdata.tsv`, `*_spot_data-selection-P*.tsv` | `cSCC_Selected_Genes.npy`, `cSCC_bert_text_encode.npy` | Ready |
-| HER2ST | `HER2` | `2D/data/HER2/` | `images/HE/*.jpg`, `count-matrices/*.tsv`, `spot-selection/*_selection.tsv` | `HER2_Selected_Genes.npy`, `HER2_loki_text_encode.npy` | Ready |
-| HBC | `HBC` | `2D/data/Human_breast_cancer_in_situ_capturing_transcriptomics/` | `*.jpg`, `*_stdata.tsv`, `spots_*.csv` | `HBC_Selected_Genes.npy`, `STNet_loki_text_encode.npy` | Ready |
-| HEST-kidney | `HEST_kidney` | `2D/data/Hest1k_datasets/kidney/` | `st/*.h5ad`, `wsis/*.tif` | `HEST_KIDNEY_gene.npy`, `HEST_KIDNEY_loki_text_encode.npy` | Ready after HEST archive restore |
-| HEST-mouse-brain | `HEST_mouse_brain` | `2D/data/Hest1k_datasets/mouse_brain/` | `st/*.h5ad`, `wsis/*.tif` | `HEST_MOUSE_BRAIN_gene.npy`, `HEST_MOUSE_BRAIN_loki_text_encode.npy` | Ready after HEST archive restore |
-| HEST-PRAD | `HEST_PRAD` | `2D/data/Hest1k_datasets/PRAD/` | `st/*.h5ad`, `wsis/*.tif` | `HEST_PRAD_gene.npy`, `HEST_PRAD_loki_text_encode.npy` | Ready after HEST archive restore |
-| HEST-LUAD | `HEST_LUAD` | `2D/data/Hest1k_datasets/hest_data_LUAD/` | `st/*.h5ad`, `wsis/*.tif` | `HEST_LUNG_gene.npy`, `HEST_LUNG_loki_text_encode.npy` | To be supplemented |
+| Dataset | `--data_name` | Data folder | Required files | Processed data package |
+|---|---|---|---|---|
+| cSCC | `cSCC` | `2D/data/GSE144240/` | `*.jpg`, `*_stdata.tsv`, `*_spot_data-selection-P*.tsv` | `STAG-2D-GSE144240.tar.zst` |
+| HER2ST | `HER2` | `2D/data/HER2/` | `images/HE/*.jpg`, `count-matrices/*.tsv`, `spot-selection/*_selection.tsv` | `STAG-2D-HER2.tar.zst` |
+| HBC | `HBC` | `2D/data/Human_breast_cancer_in_situ_capturing_transcriptomics/` | `*.jpg`, `*_stdata.tsv`, `spots_*.csv` | `STAG-2D-HBC.tar.zst` |
+| HEST-kidney | `HEST_kidney` | `2D/data/Hest1k_datasets/kidney/` | `st/*.h5ad`, `wsis/*.tif` | `STAG-2D-HEST-kidney.tar.zst` |
+| HEST-mouse-brain | `HEST_mouse_brain` | `2D/data/Hest1k_datasets/mouse_brain/` | `st/*.h5ad`, `wsis/*.tif` | `STAG-2D-HEST-mouse_brain.tar.zst` |
+| HEST-PRAD | `HEST_PRAD` | `2D/data/Hest1k_datasets/PRAD/` | `st/*.h5ad`, `wsis/*.tif` | `STAG-2D-HEST-PRAD.tar.zst` |
+| HEST-LUAD | `HEST_LUAD` | `2D/data/Hest1k_datasets/hest_data_LUAD/` | `st/*.h5ad`, `wsis/*.tif` | Not included in the processed release package. |
+
+Gene panels and gene-text embeddings are already included under
+`2D/select_genes/`.
 
 The parser also contains names such as `HEST_IDC`, `HEST_PAAD`, `HEST_SKCM`,
 `HEST_her2st`, `HEST_Liver`, and `HEST_Lung`. Before running the text-guided
@@ -331,116 +331,60 @@ cd 3D
 python main.py --config_name stnet --mode test --model_path logs/<date>/<run_name>/<checkpoint>.ckpt --gpu 0
 ```
 
-## Data Release Note
+## Data Download
 
-Large raw datasets and preprocessed serial-section folders are distributed as
-external archives rather than committed directly to GitHub. The repository keeps
-the training code, gene panels, gene-text embeddings, and restoration scripts.
-Place downloaded data in the paths shown below before training.
-
-### Option 1: full Aliyun archive
-
-The complete raw and preprocessed data archive is stored on Aliyun Drive:
+The released data are the preprocessed STAG folders used by the training code,
+packaged by dataset. Download the archives from the public data share:
 
 ```text
-Aliyun Drive path: /data/zyc-MEDIA-Re.zip
+Data share link: <to be added>
 ```
 
-From the STAG repository root, run the restoration script. It downloads the
-archive with the Aliyun Drive CLI and copies the recognized ready-to-run folders
-into this repository:
-
-```bash
-bash scripts/prepare_media_data_from_aliyunpan.sh \
-  /path/to/aliyunpan \
-  /data/zyc-MEDIA-Re.zip \
-  .
-```
-
-Manual download, if needed:
-
-```bash
-./aliyunpan download --saveto /path/to/download_dir /data/zyc-MEDIA-Re.zip
-```
-
-After restoration, the ready-to-run layout should include:
+The share contains the following files:
 
 ```text
-2D/data/GSE144240/
-2D/data/HER2/
-2D/data/Human_breast_cancer_in_situ_capturing_transcriptomics/
-2D/weights/tenpercent_resnet18.ckpt
-3D/stnet_dataset_normal_smooth/
-3D/weights/tenpercent_resnet18.ckpt
+SHA256SUMS.txt
+STAG-2D-GSE144240.tar.zst
+STAG-2D-HER2.tar.zst
+STAG-2D-HBC.tar.zst
+STAG-2D-HEST-kidney.tar.zst
+STAG-2D-HEST-mouse_brain.tar.zst
+STAG-2D-HEST-PRAD.tar.zst
+STAG-3D-HBC-stnet.tar.zst
+STAG-weights-resnet18.tar.zst
 ```
 
-On the project server used for the paper experiments, the command is:
-
-```bash
-bash scripts/prepare_media_data_from_aliyunpan.sh \
-  /mnt/pfs-gv8sxa/tts/dhg/yg/zyc/aliyunpan-v0.4.0-linux-amd64/aliyunpan \
-  /data/zyc-MEDIA-Re.zip \
-  .
-```
-
-### Option 2: ready-to-run release assets
-
-For users who do not need the full raw archive, the same ready-to-run folders can
-also be distributed as GitHub Release or HuggingFace assets. When using the
-GitHub Release mirror, download all assets from:
-
-```text
-https://github.com/MCPathology/STAG/releases/tag/data-v20260709
-```
-
-Then restore them from the repository root:
+After downloading the archives, extract them from the repository root:
 
 ```bash
 tar --use-compress-program=unzstd -xf STAG-2D-GSE144240.tar.zst
 tar --use-compress-program=unzstd -xf STAG-2D-HER2.tar.zst
 tar --use-compress-program=unzstd -xf STAG-2D-HBC.tar.zst
-
-cat STAG-3D-HBC-stnet.tar.zst.part-* > STAG-3D-HBC-stnet.tar.zst
+tar --use-compress-program=unzstd -xf STAG-2D-HEST-kidney.tar.zst
+tar --use-compress-program=unzstd -xf STAG-2D-HEST-mouse_brain.tar.zst
+tar --use-compress-program=unzstd -xf STAG-2D-HEST-PRAD.tar.zst
 tar --use-compress-program=unzstd -xf STAG-3D-HBC-stnet.tar.zst
-
 tar --use-compress-program=unzstd -xf STAG-weights-resnet18.tar.zst
+
 sha256sum -c SHA256SUMS.txt
 ```
 
-### HEST data
-
-HEST-1k subsets are restored separately from the full archive. Extract the HEST
-folder and place it under `2D/data/Hest1k_datasets/`:
+The extraction restores the expected training layout:
 
 ```text
-2D/data/Hest1k_datasets/PRAD/
+2D/data/GSE144240/
+2D/data/HER2/
+2D/data/Human_breast_cancer_in_situ_capturing_transcriptomics/
 2D/data/Hest1k_datasets/kidney/
 2D/data/Hest1k_datasets/mouse_brain/
+2D/data/Hest1k_datasets/PRAD/
+2D/weights/tenpercent_resnet18.ckpt
+3D/stnet_dataset_normal_smooth/
+3D/weights/tenpercent_resnet18.ckpt
 ```
 
-Each subset follows the HEST layout used by the loader:
-
-```text
-<subset>/st/*.h5ad
-<subset>/wsis/*.tif
-```
-
-Example selective restore:
-
-```bash
-unzip /path/to/zyc-MEDIA-Re.zip \
-  'zyc-MEDIA-Re/Data/Hest1k_datasets/PRAD/*' \
-  'zyc-MEDIA-Re/Data/Hest1k_datasets/kidney/*' \
-  'zyc-MEDIA-Re/Data/Hest1k_datasets/mouse_brain/*' \
-  -d /tmp/stag_hest_restore
-
-mkdir -p 2D/data/Hest1k_datasets
-rsync -a /tmp/stag_hest_restore/zyc-MEDIA-Re/Data/Hest1k_datasets/PRAD 2D/data/Hest1k_datasets/
-rsync -a /tmp/stag_hest_restore/zyc-MEDIA-Re/Data/Hest1k_datasets/kidney 2D/data/Hest1k_datasets/
-rsync -a /tmp/stag_hest_restore/zyc-MEDIA-Re/Data/Hest1k_datasets/mouse_brain 2D/data/Hest1k_datasets/
-```
-
-See [`DATA.md`](DATA.md) for the detailed data restoration guide.
+See [`DATA.md`](DATA.md) for the same data package list and verification
+commands.
 
 ## Citation
 
