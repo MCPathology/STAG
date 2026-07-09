@@ -43,22 +43,43 @@ The following folders have been verified with the public training code:
 settings other than the HBC/STNet serial-section setting are marked as
 supplementary.
 
-## Recommended Release Layout
+## Download and Restore Ready Assets
 
-For a GitHub release, package the ready data as external assets rather than
-committing them to the repository:
+For the ready non-HEST 2D datasets and the 3D HBC/STNet setting, download the
+release assets from:
 
 ```text
-STAG-2D-GSE144240.tar.*
-STAG-2D-HER2.tar.*
-STAG-2D-HBC.tar.*
-STAG-3D-HBC-stnet_dataset_normal_smooth.tar.*
+https://github.com/MCPathology/STAG/releases/tag/data-v20260709
 ```
 
-If an archive exceeds the GitHub Release per-asset limit, split it into numbered
-parts and reconstruct it before extraction.
+Restore from the repository root:
 
-After packaging, upload the assets with:
+```bash
+tar --use-compress-program=unzstd -xf STAG-2D-GSE144240.tar.zst
+tar --use-compress-program=unzstd -xf STAG-2D-HER2.tar.zst
+tar --use-compress-program=unzstd -xf STAG-2D-HBC.tar.zst
+
+cat STAG-3D-HBC-stnet.tar.zst.part-* > STAG-3D-HBC-stnet.tar.zst
+tar --use-compress-program=unzstd -xf STAG-3D-HBC-stnet.tar.zst
+
+tar --use-compress-program=unzstd -xf STAG-weights-resnet18.tar.zst
+sha256sum -c SHA256SUMS.txt
+```
+
+This creates:
+
+```text
+2D/data/GSE144240/
+2D/data/HER2/
+2D/data/Human_breast_cancer_in_situ_capturing_transcriptomics/
+2D/weights/tenpercent_resnet18.ckpt
+3D/stnet_dataset_normal_smooth/
+3D/weights/tenpercent_resnet18.ckpt
+```
+
+## Release Upload Helper
+
+To publish the prepared assets to a GitHub release, use:
 
 ```bash
 GITHUB_TOKEN=<token-with-contents-write> \
@@ -94,6 +115,38 @@ into the expected STAG layout:
 
 If the archive has a different top-level folder name, the script still searches
 inside the extracted tree for the recognized dataset folders.
+
+## Restore HEST-1k Subsets
+
+HEST-1k data are restored from the full archive into:
+
+```text
+2D/data/Hest1k_datasets/PRAD/
+2D/data/Hest1k_datasets/kidney/
+2D/data/Hest1k_datasets/mouse_brain/
+```
+
+Each subset should keep the HEST loader layout:
+
+```text
+<subset>/st/*.h5ad
+<subset>/wsis/*.tif
+```
+
+Selective restore example:
+
+```bash
+unzip /path/to/zyc-MEDIA-Re.zip \
+  'zyc-MEDIA-Re/Data/Hest1k_datasets/PRAD/*' \
+  'zyc-MEDIA-Re/Data/Hest1k_datasets/kidney/*' \
+  'zyc-MEDIA-Re/Data/Hest1k_datasets/mouse_brain/*' \
+  -d /tmp/stag_hest_restore
+
+mkdir -p 2D/data/Hest1k_datasets
+rsync -a /tmp/stag_hest_restore/zyc-MEDIA-Re/Data/Hest1k_datasets/PRAD 2D/data/Hest1k_datasets/
+rsync -a /tmp/stag_hest_restore/zyc-MEDIA-Re/Data/Hest1k_datasets/kidney 2D/data/Hest1k_datasets/
+rsync -a /tmp/stag_hest_restore/zyc-MEDIA-Re/Data/Hest1k_datasets/mouse_brain 2D/data/Hest1k_datasets/
+```
 
 ## Verify Data Placement
 

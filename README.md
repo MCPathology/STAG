@@ -333,19 +333,54 @@ python main.py --config_name stnet --mode test --model_path logs/<date>/<run_nam
 
 ## Data Release Note
 
-Large raw datasets and preprocessed serial-section folders should be distributed
-as external archives rather than committed directly to GitHub. For code-only
-releases, keep the folder structure above and place downloaded data in the
-corresponding paths before training.
+Large raw datasets and preprocessed serial-section folders are distributed as
+external archives rather than committed directly to GitHub. The repository keeps
+the training code, gene panels, gene-text embeddings, and restoration scripts.
+Place downloaded data in the paths shown below before training.
 
-The full data archive is stored externally as:
+### Option 1: ready-to-run release assets
+
+For the commonly used non-HEST 2D datasets and the 3D HBC/STNet setting, download
+the release assets from the data release page:
+
+```text
+https://github.com/MCPathology/STAG/releases/tag/data-v20260709
+```
+
+Restore them from the repository root:
+
+```bash
+tar --use-compress-program=unzstd -xf STAG-2D-GSE144240.tar.zst
+tar --use-compress-program=unzstd -xf STAG-2D-HER2.tar.zst
+tar --use-compress-program=unzstd -xf STAG-2D-HBC.tar.zst
+
+cat STAG-3D-HBC-stnet.tar.zst.part-* > STAG-3D-HBC-stnet.tar.zst
+tar --use-compress-program=unzstd -xf STAG-3D-HBC-stnet.tar.zst
+
+tar --use-compress-program=unzstd -xf STAG-weights-resnet18.tar.zst
+sha256sum -c SHA256SUMS.txt
+```
+
+The restored layout should include:
+
+```text
+2D/data/GSE144240/
+2D/data/HER2/
+2D/data/Human_breast_cancer_in_situ_capturing_transcriptomics/
+2D/weights/tenpercent_resnet18.ckpt
+3D/stnet_dataset_normal_smooth/
+3D/weights/tenpercent_resnet18.ckpt
+```
+
+### Option 2: full Aliyun archive
+
+The full raw and preprocessed archive is stored externally as:
 
 ```text
 Aliyun Drive: /data/zyc-MEDIA-Re.zip
 ```
 
-See [`DATA.md`](DATA.md) for the detailed data restoration guide. On the server,
-the archive can be restored with:
+On the server, restore recognized ready folders with:
 
 ```bash
 bash scripts/prepare_media_data_from_aliyunpan.sh \
@@ -353,6 +388,41 @@ bash scripts/prepare_media_data_from_aliyunpan.sh \
   /data/zyc-MEDIA-Re.zip \
   .
 ```
+
+### HEST data
+
+HEST-1k subsets are restored separately from the full archive. Extract the HEST
+folder and place it under `2D/data/Hest1k_datasets/`:
+
+```text
+2D/data/Hest1k_datasets/PRAD/
+2D/data/Hest1k_datasets/kidney/
+2D/data/Hest1k_datasets/mouse_brain/
+```
+
+Each subset follows the HEST layout used by the loader:
+
+```text
+<subset>/st/*.h5ad
+<subset>/wsis/*.tif
+```
+
+Example selective restore:
+
+```bash
+unzip /path/to/zyc-MEDIA-Re.zip \
+  'zyc-MEDIA-Re/Data/Hest1k_datasets/PRAD/*' \
+  'zyc-MEDIA-Re/Data/Hest1k_datasets/kidney/*' \
+  'zyc-MEDIA-Re/Data/Hest1k_datasets/mouse_brain/*' \
+  -d /tmp/stag_hest_restore
+
+mkdir -p 2D/data/Hest1k_datasets
+rsync -a /tmp/stag_hest_restore/zyc-MEDIA-Re/Data/Hest1k_datasets/PRAD 2D/data/Hest1k_datasets/
+rsync -a /tmp/stag_hest_restore/zyc-MEDIA-Re/Data/Hest1k_datasets/kidney 2D/data/Hest1k_datasets/
+rsync -a /tmp/stag_hest_restore/zyc-MEDIA-Re/Data/Hest1k_datasets/mouse_brain 2D/data/Hest1k_datasets/
+```
+
+See [`DATA.md`](DATA.md) for the detailed data restoration guide.
 
 ## Citation
 
