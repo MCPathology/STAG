@@ -58,6 +58,16 @@ STAG-3D-HBC-stnet_dataset_normal_smooth.tar.*
 If an archive exceeds the GitHub Release per-asset limit, split it into numbered
 parts and reconstruct it before extraction.
 
+After packaging, upload the assets with:
+
+```bash
+GITHUB_TOKEN=<token-with-contents-write> \
+  bash scripts/upload_release_assets.sh /path/to/STAG_release_assets_20260709
+```
+
+For organization-owned repositories, make sure the token satisfies the
+organization policy and has access to create releases for this repository.
+
 ## Restore from Aliyun Drive on the Server
 
 From the repository root, run:
