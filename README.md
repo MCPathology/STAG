@@ -338,16 +338,62 @@ external archives rather than committed directly to GitHub. The repository keeps
 the training code, gene panels, gene-text embeddings, and restoration scripts.
 Place downloaded data in the paths shown below before training.
 
-### Option 1: ready-to-run release assets
+### Option 1: full Aliyun archive
 
-For the commonly used non-HEST 2D datasets and the 3D HBC/STNet setting, download
-the release assets from the data release page:
+The complete raw and preprocessed data archive is stored on Aliyun Drive:
+
+```text
+Aliyun Drive path: /data/zyc-MEDIA-Re.zip
+```
+
+From the STAG repository root, run the restoration script. It downloads the
+archive with the Aliyun Drive CLI and copies the recognized ready-to-run folders
+into this repository:
+
+```bash
+bash scripts/prepare_media_data_from_aliyunpan.sh \
+  /path/to/aliyunpan \
+  /data/zyc-MEDIA-Re.zip \
+  .
+```
+
+Manual download, if needed:
+
+```bash
+./aliyunpan download --saveto /path/to/download_dir /data/zyc-MEDIA-Re.zip
+```
+
+After restoration, the ready-to-run layout should include:
+
+```text
+2D/data/GSE144240/
+2D/data/HER2/
+2D/data/Human_breast_cancer_in_situ_capturing_transcriptomics/
+2D/weights/tenpercent_resnet18.ckpt
+3D/stnet_dataset_normal_smooth/
+3D/weights/tenpercent_resnet18.ckpt
+```
+
+On the project server used for the paper experiments, the command is:
+
+```bash
+bash scripts/prepare_media_data_from_aliyunpan.sh \
+  /mnt/pfs-gv8sxa/tts/dhg/yg/zyc/aliyunpan-v0.4.0-linux-amd64/aliyunpan \
+  /data/zyc-MEDIA-Re.zip \
+  .
+```
+
+### Option 2: ready-to-run release assets
+
+For users who do not need the full raw archive, the same ready-to-run folders can
+also be distributed as GitHub Release or HuggingFace assets. When using the
+GitHub Release mirror, download all assets from:
 
 ```text
 https://github.com/MCPathology/STAG/releases/tag/data-v20260709
 ```
 
-Restore them from the repository root:
+Then restore them from the repository root:
 
 ```bash
 tar --use-compress-program=unzstd -xf STAG-2D-GSE144240.tar.zst
@@ -359,34 +405,6 @@ tar --use-compress-program=unzstd -xf STAG-3D-HBC-stnet.tar.zst
 
 tar --use-compress-program=unzstd -xf STAG-weights-resnet18.tar.zst
 sha256sum -c SHA256SUMS.txt
-```
-
-The restored layout should include:
-
-```text
-2D/data/GSE144240/
-2D/data/HER2/
-2D/data/Human_breast_cancer_in_situ_capturing_transcriptomics/
-2D/weights/tenpercent_resnet18.ckpt
-3D/stnet_dataset_normal_smooth/
-3D/weights/tenpercent_resnet18.ckpt
-```
-
-### Option 2: full Aliyun archive
-
-The full raw and preprocessed archive is stored externally as:
-
-```text
-Aliyun Drive: /data/zyc-MEDIA-Re.zip
-```
-
-On the server, restore recognized ready folders with:
-
-```bash
-bash scripts/prepare_media_data_from_aliyunpan.sh \
-  /mnt/pfs-gv8sxa/tts/dhg/yg/zyc/aliyunpan-v0.4.0-linux-amd64/aliyunpan \
-  /data/zyc-MEDIA-Re.zip \
-  .
 ```
 
 ### HEST data

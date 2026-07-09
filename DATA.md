@@ -43,16 +43,51 @@ The following folders have been verified with the public training code:
 settings other than the HBC/STNet serial-section setting are marked as
 supplementary.
 
-## Download and Restore Ready Assets
+## Download the Full Data Archive
 
-For the ready non-HEST 2D datasets and the 3D HBC/STNet setting, download the
-release assets from:
+The primary data source is the full Aliyun Drive archive:
+
+```text
+Aliyun Drive path: /data/zyc-MEDIA-Re.zip
+```
+
+From the repository root, run the restoration script. It downloads the archive
+with the Aliyun Drive CLI and restores the recognized ready folders:
+
+```bash
+bash scripts/prepare_media_data_from_aliyunpan.sh \
+  /path/to/aliyunpan \
+  /data/zyc-MEDIA-Re.zip \
+  .
+```
+
+Manual download, if needed:
+
+```bash
+./aliyunpan download --saveto /path/to/download_dir /data/zyc-MEDIA-Re.zip
+```
+
+This creates the main ready-to-run layout:
+
+```text
+2D/data/GSE144240/
+2D/data/HER2/
+2D/data/Human_breast_cancer_in_situ_capturing_transcriptomics/
+2D/weights/tenpercent_resnet18.ckpt
+3D/stnet_dataset_normal_smooth/
+3D/weights/tenpercent_resnet18.ckpt
+```
+
+## Optional Ready-Asset Mirror
+
+The same ready-to-run folders can also be mirrored as smaller GitHub Release or
+HuggingFace assets. For the GitHub Release mirror, download all assets from:
 
 ```text
 https://github.com/MCPathology/STAG/releases/tag/data-v20260709
 ```
 
-Restore from the repository root:
+Then restore from the repository root:
 
 ```bash
 tar --use-compress-program=unzstd -xf STAG-2D-GSE144240.tar.zst
@@ -64,17 +99,6 @@ tar --use-compress-program=unzstd -xf STAG-3D-HBC-stnet.tar.zst
 
 tar --use-compress-program=unzstd -xf STAG-weights-resnet18.tar.zst
 sha256sum -c SHA256SUMS.txt
-```
-
-This creates:
-
-```text
-2D/data/GSE144240/
-2D/data/HER2/
-2D/data/Human_breast_cancer_in_situ_capturing_transcriptomics/
-2D/weights/tenpercent_resnet18.ckpt
-3D/stnet_dataset_normal_smooth/
-3D/weights/tenpercent_resnet18.ckpt
 ```
 
 ## Release Upload Helper
@@ -89,7 +113,7 @@ GITHUB_TOKEN=<token-with-contents-write> \
 For organization-owned repositories, make sure the token satisfies the
 organization policy and has access to create releases for this repository.
 
-## Restore from Aliyun Drive on the Server
+## Restore from Aliyun Drive on the Project Server
 
 From the repository root, run:
 
