@@ -1,0 +1,6 @@
+# Force GitHub Linguist to report this repository as Python.
+# All non-source artifacts are excluded from language statistics.
+* linguist-vendored
+
+# Count Python implementation files as the repository language.
+*.py linguist-vendored=false linguist-language=Python

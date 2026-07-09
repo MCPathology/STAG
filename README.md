@@ -12,7 +12,7 @@ repository contains two training pipelines:
 For implementation details, see [`2D/README.md`](2D/README.md),
 [`3D/README.md`](3D/README.md), and [`DOCS.md`](DOCS.md).
 
-![STAG framework overview](assets/MEDIA_MainArch.png)
+![STAG framework overview](assets/MEDIA_MainArch.jpg)
 
 ## Framework Overview
 
@@ -25,9 +25,7 @@ learning losses (`L_s` and `L_g`) to refine and align cross-modal features
 between histology and gene expression.
 
 During inference, only the pathology encoder is used, so STAG predicts gene
-expression directly from the histology image. The original PDF version of the
-main architecture figure is available at
-[`assets/MEDIA_MainArch.pdf`](assets/MEDIA_MainArch.pdf).
+expression directly from the histology image.
 
 ## Contents
 
@@ -37,6 +35,7 @@ main architecture figure is available at
 4. [3D Pipeline](#3d-pipeline)
 5. [Outputs](#outputs)
 6. [Data Release Note](#data-release-note)
+7. [Citation](#citation)
 
 ## Pipeline Overview
 
@@ -339,3 +338,21 @@ Large raw datasets and preprocessed serial-section folders should be distributed
 as external archives rather than committed directly to GitHub. For code-only
 releases, keep the folder structure above and place downloaded data in the
 corresponding paths before training.
+
+## Citation
+
+If you find this repository useful, please cite:
+
+```bibtex
+@article{QU2026104206,
+  title = {STAG: Biologically guided spatial transcriptomics prediction via hypergraph learning},
+  journal = {Medical Image Analysis},
+  pages = {104206},
+  year = {2026},
+  issn = {1361-8415},
+  doi = {https://doi.org/10.1016/j.media.2026.104206},
+  url = {https://www.sciencedirect.com/science/article/pii/S1361841526002756},
+  author = {Mingcheng Qu and Yuchuan Zhao and Guang Yang and Donglin Di and Xiu Su and Hongyan Xu and Yang Song and Lei Fan},
+  keywords = {Spatial transcriptomics, Whole-slide images, Cross-modal alignment, Contrastive learning, Hypergraph learning}
+}
+```
