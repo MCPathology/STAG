@@ -111,15 +111,15 @@ Gene panels and gene-text embeddings are loaded from `2D/select_genes/`.
 The following datasets are configured for the text-guided `train_STAG.py`
 entry.
 
-| Dataset | `--data_name` | Data folder | Required files | Gene/text files |
-|---|---|---|---|---|
-| cSCC | `cSCC` | `2D/data/GSE144240/` | `*.jpg`, `*_stdata.tsv`, `*_spot_data-selection-P*.tsv` | `cSCC_Selected_Genes.npy`, `cSCC_bert_text_encode.npy` |
-| HER2ST | `HER2` | `2D/data/HER2/` | `images/HE/*.jpg`, `count-matrices/*.tsv`, `spot-selection/*_selection.tsv` | `HER2_Selected_Genes.npy`, `HER2_loki_text_encode.npy` |
-| HBC | `HBC` | `2D/data/Human_breast_cancer_in_situ_capturing_transcriptomics/` | `*.jpg`, `*_stdata.tsv`, `spots_*.csv` | `HBC_Selected_Genes.npy`, `STNet_loki_text_encode.npy` |
-| HEST-LUAD | `HEST_LUAD` | `2D/data/Hest1k_datasets/hest_data_LUAD/` | `st/*.h5ad`, `wsis/*.tif` | `HEST_LUNG_gene.npy`, `HEST_LUNG_loki_text_encode.npy` |
-| HEST-kidney | `HEST_kidney` | `2D/data/Hest1k_datasets/kidney/` | `st/*.h5ad`, `wsis/*.tif` | `HEST_KIDNEY_gene.npy`, `HEST_KIDNEY_loki_text_encode.npy` |
-| HEST-mouse-brain | `HEST_mouse_brain` | `2D/data/Hest1k_datasets/mouse_brain/` | `st/*.h5ad`, `wsis/*.tif` | `HEST_MOUSE_BRAIN_gene.npy`, `HEST_MOUSE_BRAIN_loki_text_encode.npy` |
-| HEST-PRAD | `HEST_PRAD` | `2D/data/Hest1k_datasets/PRAD/` | `st/*.h5ad`, `wsis/*.tif` | `HEST_PRAD_gene.npy`, `HEST_PRAD_loki_text_encode.npy` |
+| Dataset | `--data_name` | Data folder | Required files | Gene/text files | Status |
+|---|---|---|---|---|---|
+| cSCC | `cSCC` | `2D/data/GSE144240/` | `*.jpg`, `*_stdata.tsv`, `*_spot_data-selection-P*.tsv` | `cSCC_Selected_Genes.npy`, `cSCC_bert_text_encode.npy` | Ready |
+| HER2ST | `HER2` | `2D/data/HER2/` | `images/HE/*.jpg`, `count-matrices/*.tsv`, `spot-selection/*_selection.tsv` | `HER2_Selected_Genes.npy`, `HER2_loki_text_encode.npy` | Ready |
+| HBC | `HBC` | `2D/data/Human_breast_cancer_in_situ_capturing_transcriptomics/` | `*.jpg`, `*_stdata.tsv`, `spots_*.csv` | `HBC_Selected_Genes.npy`, `STNet_loki_text_encode.npy` | Ready |
+| HEST-kidney | `HEST_kidney` | `2D/data/Hest1k_datasets/kidney/` | `st/*.h5ad`, `wsis/*.tif` | `HEST_KIDNEY_gene.npy`, `HEST_KIDNEY_loki_text_encode.npy` | Ready after HEST archive restore |
+| HEST-mouse-brain | `HEST_mouse_brain` | `2D/data/Hest1k_datasets/mouse_brain/` | `st/*.h5ad`, `wsis/*.tif` | `HEST_MOUSE_BRAIN_gene.npy`, `HEST_MOUSE_BRAIN_loki_text_encode.npy` | Ready after HEST archive restore |
+| HEST-PRAD | `HEST_PRAD` | `2D/data/Hest1k_datasets/PRAD/` | `st/*.h5ad`, `wsis/*.tif` | `HEST_PRAD_gene.npy`, `HEST_PRAD_loki_text_encode.npy` | Ready after HEST archive restore |
+| HEST-LUAD | `HEST_LUAD` | `2D/data/Hest1k_datasets/hest_data_LUAD/` | `st/*.h5ad`, `wsis/*.tif` | `HEST_LUNG_gene.npy`, `HEST_LUNG_loki_text_encode.npy` | To be supplemented |
 
 The parser also contains names such as `HEST_IDC`, `HEST_PAAD`, `HEST_SKCM`,
 `HEST_her2st`, `HEST_Liver`, and `HEST_Lung`. Before running the text-guided
@@ -161,9 +161,6 @@ python train_STAG.py --data_name HER2 --k_folds 6 --epochs 50 --batch_size 8
 # HBC
 python train_STAG.py --data_name HBC --k_folds 9 --epochs 50 --batch_size 8
 
-# HEST-LUAD
-python train_STAG.py --data_name HEST_LUAD --k_folds 6 --epochs 50 --batch_size 8
-
 # HEST-kidney
 python train_STAG.py --data_name HEST_kidney --k_folds 6 --epochs 50 --batch_size 8
 
@@ -172,6 +169,8 @@ python train_STAG.py --data_name HEST_mouse_brain --k_folds 5 --epochs 50 --batc
 
 # HEST-PRAD
 python train_STAG.py --data_name HEST_PRAD --k_folds 6 --epochs 50 --batch_size 8
+
+# HEST-LUAD is kept as an optional extension and will be supplemented later.
 ```
 
 Recommended settings:
@@ -181,10 +180,10 @@ Recommended settings:
 | cSCC | `cSCC` | 4 | 50 | 8 |
 | HER2ST | `HER2` | 6 | 50 | 8 |
 | HBC | `HBC` | 9 | 50 | 8 |
-| HEST-LUAD | `HEST_LUAD` | 6 | 50 | 8 |
 | HEST-kidney | `HEST_kidney` | 6 | 50 | 8 |
 | HEST-mouse-brain | `HEST_mouse_brain` | 5 | 50 | 8 |
 | HEST-PRAD | `HEST_PRAD` | 6 | 50 | 8 |
+| HEST-LUAD | `HEST_LUAD` | To be supplemented | To be supplemented | To be supplemented |
 
 Quick smoke test:
 
@@ -239,13 +238,13 @@ Each `*_all_layer_data.npy` file is a Python dictionary saved with
 
 ### 3D Dataset Table
 
-| Dataset/config | Expected folder | Required files | Folds | Epochs | Batch size |
-|---|---|---|---:|---:|---:|
-| STNet serial sections | `3D/stnet_dataset_normal_smooth/` | `cropped_imgs/`, `A_all_layer_data.npy` through `W_all_layer_data.npy`, `stnet_top_250_genes.csv` | 23 | 50 | 16 |
-| HER2ST serial sections | `3D/her2st_heg250_dataset/` | `cropped_imgs/`, `A_all_layer_data.npy` through `H_all_layer_data.npy`, `her2st_top_250_genes.csv` | 8 | 60 | 1 |
-| Skin | `3D/skin_dataset_normal_smooth/` | `cropped_imgs/`, `A_all_layer_data.npy` through `D_all_layer_data.npy`, `skin_top_250_genes.csv` | 4 | 20 | 4 |
-| PCW | `3D/pcw_dataset_normal_smooth/` | `cropped_imgs/`, `A_all_layer_data.npy` through `F_all_layer_data.npy`, `pcw_top_250_genes.csv` | 6 | 20 | 2 |
-| Mouse | `3D/mouse_dataset_normal_smooth/` | `cropped_imgs/`, `A_all_layer_data.npy` through `D_all_layer_data.npy`, `mouse_top_250_genes.csv` | 4 | 40 | 2 |
+| Dataset/config | Expected folder | Required files | Folds | Epochs | Batch size | Status |
+|---|---|---|---:|---:|---:|---|
+| HBC serial sections (`stnet`) | `3D/stnet_dataset_normal_smooth/` | `cropped_imgs/`, `*_all_layer_data.npy`, `stnet_top_250_genes.csv` | 16 | 50 | 16 | Ready |
+| HER2ST serial sections (`her2st`) | `3D/her2st_heg250_dataset/` | `cropped_imgs/`, `*_all_layer_data.npy`, `her2st_top_250_genes.csv` | 8 | 60 | 1 | To be supplemented |
+| Skin (`skin`) | `3D/skin_dataset_normal_smooth/` | `cropped_imgs/`, `*_all_layer_data.npy`, `skin_top_250_genes.csv` | 4 | 20 | 4 | To be supplemented |
+| PCW (`pcw`) | `3D/pcw_dataset_normal_smooth/` | `cropped_imgs/`, `*_all_layer_data.npy`, `pcw_top_250_genes.csv` | 6 | 20 | 2 | To be supplemented |
+| Mouse (`mouse`) | `3D/mouse_dataset_normal_smooth/` | `cropped_imgs/`, `*_all_layer_data.npy`, `mouse_top_250_genes.csv` | 4 | 40 | 2 | To be supplemented |
 
 ### 3D Splits
 
@@ -255,7 +254,7 @@ The remaining slices are used for training.
 
 | Config | Slice names | Folds |
 |---|---|---:|
-| `stnet` | `A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W` | 23 |
+| `stnet` | Slice names are read from the available preprocessed files | 16 folds |
 | `her2st` | `A, B, C, D, E, F, G, H` | 8 |
 | `skin` | `A, B, C, D` | 4 |
 | `pcw` | `A, B, C, D, E, F` | 6 |
@@ -292,8 +291,8 @@ python main.py --config_name mouse --mode cv --select_fold 0 --gpu 0
 Full cross-validation commands:
 
 ```bash
-# STNet: folds 0-22
-for f in $(seq 0 22); do python main.py --config_name stnet --mode cv --select_fold $f --gpu 0; done
+# HBC serial sections: folds 0-15
+for f in $(seq 0 15); do python main.py --config_name stnet --mode cv --select_fold $f --gpu 0; done
 
 # HER2ST: folds 0-7
 for f in $(seq 0 7); do python main.py --config_name her2st --mode cv --select_fold $f --gpu 0; done

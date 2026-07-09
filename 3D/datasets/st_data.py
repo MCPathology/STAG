@@ -94,9 +94,8 @@ class STDataset(BaselineDataset):
                 if os.path.basename(path)
             }
             filtered_names = [name for name in names if name in available_prefixes]
-            missing_names = [name for name in names if name not in available_prefixes]
             if filtered_names and len(filtered_names) != len(names):
-                print(f"Warning: filtered {self.data} folds to slices with cropped images. Missing: {missing_names}")
+                print(f"Using available {self.data} slices: {filtered_names}")
                 names = filtered_names
         
         te_names = []
@@ -137,6 +136,12 @@ class STDataset(BaselineDataset):
             start_idx = fold * fold_size
             end_idx = start_idx + fold_size if fold < num_folds - 1 else len(patients)
             te_names.extend(patients[start_idx:end_idx])
+
+        if not te_names:
+            raise ValueError(
+                f"Invalid fold index {fold} for dataset '{self.data}'. "
+                f"Available slice names after data filtering: {names}"
+            )
         
         tr_names = [name for name in names if name not in te_names]
         print(f"tests: {te_names}")

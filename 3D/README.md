@@ -52,16 +52,17 @@ PNG patches.
 
 ## Dataset Settings
 
-| Config | Data folder | Slices/Folds | Epochs | Batch size |
-|---|---|---:|---:|---:|
-| `stnet` | `stnet_dataset_normal_smooth` | 23 | 50 | 16 |
-| `her2st` | `her2st_heg250_dataset` | 8 | 60 | 1 |
-| `skin` | `skin_dataset_normal_smooth` | 4 | 20 | 4 |
-| `pcw` | `pcw_dataset_normal_smooth` | 6 | 20 | 2 |
-| `mouse` | `mouse_dataset_normal_smooth` | 4 | 40 | 2 |
+| Config | Data folder | Slices/Folds | Epochs | Batch size | Status |
+|---|---|---:|---:|---:|---|
+| `stnet` | `stnet_dataset_normal_smooth` | 16 | 50 | 16 | Ready |
+| `her2st` | `her2st_heg250_dataset` | 8 | 60 | 1 | To be supplemented |
+| `skin` | `skin_dataset_normal_smooth` | 4 | 20 | 4 | To be supplemented |
+| `pcw` | `pcw_dataset_normal_smooth` | 6 | 20 | 2 | To be supplemented |
+| `mouse` | `mouse_dataset_normal_smooth` | 4 | 40 | 2 | To be supplemented |
 
-The fold count is determined by the serial-section slice names used in
-`datasets/st_data.py`. The YAML files should match these counts.
+The fold count is determined by the serial-section slice names available in the
+preprocessed folder. The loader checks `cropped_imgs/` and uses the slice names
+that are actually present.
 
 ## Split Protocol
 
@@ -72,8 +73,8 @@ training. No spot-level random splitting is used.
 
 | Config | Slice names | Fold rule |
 |---|---|---|
+| `stnet` | read from available preprocessed slice files | fold `i` tests the corresponding available slice |
 | `her2st` | `A, B, C, D, E, F, G, H` | 8 folds; fold `i` tests slice `A` through `H` respectively |
-| `stnet` | `A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W` | 23 folds; fold `i` tests the corresponding slice in this list |
 | `skin` | `A, B, C, D` | 4 folds; fold `i` tests one slice |
 | `pcw` | `A, B, C, D, E, F` | 6 folds; fold `i` tests one slice |
 | `mouse` | `A, B, C, D` | 4 folds; fold `i` tests one slice |
@@ -87,7 +88,7 @@ Required files by config:
 ```text
 stnet_dataset_normal_smooth/
 |-- cropped_imgs/
-|-- A_all_layer_data.npy ... W_all_layer_data.npy
+|-- *_all_layer_data.npy
 `-- stnet_top_250_genes.csv
 
 her2st_heg250_dataset/
@@ -119,10 +120,11 @@ Run one selected fold:
 python main.py --config_name stnet --mode cv --select_fold 0 --gpu 0
 ```
 
-Run all folds by launching the selected folds separately:
+Run all available folds by launching selected folds separately. If a fold index
+is not available for the restored data, the loader raises an explicit error.
 
 ```bash
-for f in $(seq 0 22); do
+for f in $(seq 0 15); do
   python main.py --config_name stnet --mode cv --select_fold $f --gpu 0
 done
 ```
@@ -130,20 +132,11 @@ done
 Dataset-specific commands:
 
 ```bash
-# STNet, 23 folds, 50 epochs
+# HBC serial sections, 50 epochs
 python main.py --config_name stnet --mode cv --select_fold 0 --gpu 0
 
-# HER2ST, 8 folds, 60 epochs
-python main.py --config_name her2st --mode cv --select_fold 0 --gpu 0
-
-# Skin, 4 folds, 20 epochs
-python main.py --config_name skin --mode cv --select_fold 0 --gpu 0
-
-# PCW, 6 folds, 20 epochs
-python main.py --config_name pcw --mode cv --select_fold 0 --gpu 0
-
-# Mouse, 4 folds, 40 epochs
-python main.py --config_name mouse --mode cv --select_fold 0 --gpu 0
+# The her2st, skin, pcw, and mouse 3D settings are optional extensions and will
+# be supplemented separately.
 ```
 
 ## Outputs

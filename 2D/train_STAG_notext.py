@@ -56,6 +56,7 @@ def parse_args():
     parser.add_argument('--batch_size', type=int, default=16, help="批处理大小")
     parser.add_argument('--seed', type=int, default=1553, help="用于K折划分和随机操作的种子")
     parser.add_argument('--num_workers', type=int, default=4, help="数据加载器使用的工作进程数")
+    parser.add_argument('--select_fold', type=int, default=-1, help="Run one fold by index; -1 runs all folds.")
     parser.add_argument('--save_checkpoints', action='store_true', help="Save best-fold model weights.")
     parser.add_argument('--save_tensorboard', action='store_true', help="Save TensorBoard event files.")
     parser.add_argument('--save_logs', action='store_true', help="Save full stdout training logs.")
@@ -183,6 +184,8 @@ def main():
     split_save_path = os.path.join(log_dir, f"{args.data_name}_kfold_splits.json")
 
     if args.data_name.startswith('HEST_'):
+        if HESTDataset is None or get_full_kfold_splits is None or get_all_subset_names is None:
+            raise ImportError("HEST training requires openslide/open-slide libraries. Install the HEST optional dependencies before using HEST_* datasets.")
         hest_subset_name = args.data_name.replace('HEST_', '')
         if hest_subset_name in ['her2st', 'kidney', 'mouse_brain', 'PRAD', 'Liver', 'Lung']:
             data_path = os.path.join(DATA_PATHS['HEST_BASE'], 'hest1k_datasets', hest_subset_name)
@@ -236,6 +239,8 @@ def main():
     fold_results = []
     
     for fold, plan in enumerate(kfold_split_plans):
+        if args.select_fold >= 0 and fold != args.select_fold:
+            continue
         print(f"\n{'='*25} FOLD {fold + 1}/{len(kfold_split_plans)} {'='*25}")
         
         datasets_to_close = [] 

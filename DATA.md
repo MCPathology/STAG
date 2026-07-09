@@ -10,20 +10,53 @@ Aliyun Drive: /data/zyc-MEDIA-Re.zip
 Archive size: about 200.95 GB
 ```
 
-GitHub has a hard 100 MB single-file limit and is not suitable for hosting the
-full raw WSI/ST archive. This repository therefore tracks:
+GitHub has a hard 100 MB single-file limit for normal Git objects and is not
+suitable for committing the full raw WSI/ST archive directly to the repository.
+The ready-to-run non-HEST 2D datasets are also several GB in total, so they
+should be released as GitHub Release assets, Git LFS objects with sufficient
+quota, or a HuggingFace Dataset. This repository therefore tracks:
 
 - source code;
 - gene panels and gene-text embeddings under `2D/select_genes/`;
 - data layout documentation;
 - restoration scripts.
 
-The following data are intentionally not committed:
+The following data are intentionally not committed to normal Git history:
 
 - `2D/data/`;
 - preprocessed 3D dataset folders such as `3D/stnet_dataset_normal_smooth/`;
 - raw WSI files such as `.tif`, `.tiff`, `.svs`;
 - downloaded `.zip`/`.tar` archives.
+
+## Ready Data Status
+
+The following folders have been verified with the public training code:
+
+```text
+2D/data/GSE144240/
+2D/data/HER2/
+2D/data/Human_breast_cancer_in_situ_capturing_transcriptomics/
+3D/stnet_dataset_normal_smooth/
+```
+
+`2D/data/Hest1k_datasets/` is restored separately. `HEST_LUAD` and optional 3D
+settings other than the HBC/STNet serial-section setting are marked as
+supplementary.
+
+## Recommended Release Layout
+
+For a GitHub release, package the ready data as external assets rather than
+committing them to the repository:
+
+```text
+STAG-2D-GSE144240.tar.*
+STAG-2D-HER2.tar.*
+STAG-2D-HBC.tar.*
+STAG-3D-HBC-stnet_dataset_normal_smooth.tar.*
+```
+
+If an archive exceeds the GitHub Release per-asset limit, split it into numbered
+parts and reconstruct it before extraction.
 
 ## Restore from Aliyun Drive on the Server
 
@@ -43,15 +76,10 @@ into the expected STAG layout:
 2D/data/
 |-- GSE144240/
 |-- HER2/
-|-- Human_breast_cancer_in_situ_capturing_transcriptomics/
-`-- Hest1k_datasets/
+`-- Human_breast_cancer_in_situ_capturing_transcriptomics/
 
 3D/
-|-- stnet_dataset_normal_smooth/
-|-- her2st_heg250_dataset/
-|-- skin_dataset_normal_smooth/
-|-- pcw_dataset_normal_smooth/
-`-- mouse_dataset_normal_smooth/
+`-- stnet_dataset_normal_smooth/
 ```
 
 If the archive has a different top-level folder name, the script still searches
