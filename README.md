@@ -82,6 +82,23 @@ Hest1k_datasets/<subset>/
 Gene panels and gene-text embeddings are already expected in `2D/select_genes/`
 and are loaded automatically by the training scripts.
 
+Release-ready 2D datasets for the text-guided `train_STAG.py` entry:
+
+| Dataset | `--data_name` | Expected folder | Main files required | Gene/text files loaded |
+|---|---|---|---|---|
+| cSCC | `cSCC` | `2D/data/GSE144240/` | `*.jpg`, `*_stdata.tsv`, `*_spot_data-selection-P*.tsv` | `cSCC_Selected_Genes.npy`, `cSCC_bert_text_encode.npy` |
+| HER2ST | `HER2` | `2D/data/HER2/` | `images/HE/*.jpg`, `count-matrices/*.tsv`, `spot-selection/*_selection.tsv` | `HER2_Selected_Genes.npy`, `HER2_loki_text_encode.npy` |
+| HBC | `HBC` | `2D/data/Human_breast_cancer_in_situ_capturing_transcriptomics/` | `*.jpg`, `*_stdata.tsv`, `spots_*.csv` | `HBC_Selected_Genes.npy`, `STNet_loki_text_encode.npy` |
+| HEST-LUAD | `HEST_LUAD` | `2D/data/Hest1k_datasets/hest_data_LUAD/` | `st/*.h5ad`, `wsis/*.tif` | `HEST_LUNG_gene.npy`, `HEST_LUNG_loki_text_encode.npy` |
+| HEST-kidney | `HEST_kidney` | `2D/data/Hest1k_datasets/kidney/` | `st/*.h5ad`, `wsis/*.tif` | `HEST_KIDNEY_gene.npy`, `HEST_KIDNEY_loki_text_encode.npy` |
+| HEST-mouse-brain | `HEST_mouse_brain` | `2D/data/Hest1k_datasets/mouse_brain/` | `st/*.h5ad`, `wsis/*.tif` | `HEST_MOUSE_BRAIN_gene.npy`, `HEST_MOUSE_BRAIN_loki_text_encode.npy` |
+| HEST-PRAD | `HEST_PRAD` | `2D/data/Hest1k_datasets/PRAD/` | `st/*.h5ad`, `wsis/*.tif` | `HEST_PRAD_gene.npy`, `HEST_PRAD_loki_text_encode.npy` |
+
+The parser also contains names such as `HEST_IDC`, `HEST_PAAD`, `HEST_SKCM`,
+`HEST_her2st`, `HEST_Liver`, and `HEST_Lung`. Before running the text-guided
+main model on those datasets, add the corresponding gene-list and text-embedding
+entries to `GENE_FILES` and `TEXT_FILES` in `2D/train_STAG.py`.
+
 ## 4. Train 2D STAG
 
 Run all commands from the `2D/` directory.
@@ -93,23 +110,26 @@ cd 2D
 Recommended full cross-validation commands:
 
 ```bash
-# cSCC, 4-fold CV, 50 epochs
+# cSCC
 python train_STAG.py --data_name cSCC --k_folds 4 --epochs 50 --batch_size 8
 
-# HER2ST, 6-fold CV, 50 epochs
+# HER2ST
 python train_STAG.py --data_name HER2 --k_folds 6 --epochs 50 --batch_size 8
 
-# HBC, 9-fold CV, 50 epochs
+# HBC
 python train_STAG.py --data_name HBC --k_folds 9 --epochs 50 --batch_size 8
 
-# HEST-PRAD, 6-fold CV, 50 epochs
-python train_STAG.py --data_name HEST_PRAD --k_folds 6 --epochs 50 --batch_size 8
+# HEST-LUAD
+python train_STAG.py --data_name HEST_LUAD --k_folds 6 --epochs 50 --batch_size 8
 
-# HEST-kidney, 6-fold CV, 50 epochs
+# HEST-kidney
 python train_STAG.py --data_name HEST_kidney --k_folds 6 --epochs 50 --batch_size 8
 
-# HEST-mouse-brain, 5-fold CV, 50 epochs
+# HEST-mouse-brain
 python train_STAG.py --data_name HEST_mouse_brain --k_folds 5 --epochs 50 --batch_size 8
+
+# HEST-PRAD
+python train_STAG.py --data_name HEST_PRAD --k_folds 6 --epochs 50 --batch_size 8
 ```
 
 Recommended settings:
@@ -119,9 +139,10 @@ Recommended settings:
 | cSCC | `cSCC` | 4 | 50 | 8 |
 | HER2ST | `HER2` | 6 | 50 | 8 |
 | HBC | `HBC` | 9 | 50 | 8 |
-| HEST-PRAD | `HEST_PRAD` | 6 | 50 | 8 |
+| HEST-LUAD | `HEST_LUAD` | 6 | 50 | 8 |
 | HEST-kidney | `HEST_kidney` | 6 | 50 | 8 |
 | HEST-mouse-brain | `HEST_mouse_brain` | 5 | 50 | 8 |
+| HEST-PRAD | `HEST_PRAD` | 6 | 50 | 8 |
 
 To run a quick smoke test, reduce the epoch count and batch size:
 
@@ -134,9 +155,13 @@ Additional 2D variants:
 ```bash
 # No gene-text embeddings
 python train_STAG_notext.py --data_name cSCC --k_folds 4 --epochs 50 --batch_size 16
+python train_STAG_notext.py --data_name HER2 --k_folds 6 --epochs 50 --batch_size 16
+python train_STAG_notext.py --data_name HBC --k_folds 9 --epochs 50 --batch_size 16
 
 # HVG gene panel
+python train_STAG_hvg.py --data_name cSCC --k_folds 4 --epochs 80 --batch_size 8 --gene_mode hvg
 python train_STAG_hvg.py --data_name HER2 --k_folds 6 --epochs 80 --batch_size 8 --gene_mode hvg
+python train_STAG_hvg.py --data_name HBC --k_folds 9 --epochs 80 --batch_size 8 --gene_mode hvg
 ```
 
 ## 5. 2D Split Protocol
@@ -200,6 +225,16 @@ Required preprocessed folders:
 Other 3D configs follow the same format. See [`3D/README.md`](3D/README.md) for
 the full list.
 
+3D datasets and files:
+
+| Dataset/config | Expected folder | Required files |
+|---|---|---|
+| STNet serial sections | `3D/stnet_dataset_normal_smooth/` | `cropped_imgs/`, `A_all_layer_data.npy` through `W_all_layer_data.npy`, `stnet_top_250_genes.csv` |
+| HER2ST serial sections | `3D/her2st_heg250_dataset/` | `cropped_imgs/`, `A_all_layer_data.npy` through `H_all_layer_data.npy`, `her2st_top_250_genes.csv` |
+| Skin | `3D/skin_dataset_normal_smooth/` | `cropped_imgs/`, `A_all_layer_data.npy` through `D_all_layer_data.npy`, `skin_top_250_genes.csv` |
+| PCW | `3D/pcw_dataset_normal_smooth/` | `cropped_imgs/`, `A_all_layer_data.npy` through `F_all_layer_data.npy`, `pcw_top_250_genes.csv` |
+| Mouse | `3D/mouse_dataset_normal_smooth/` | `cropped_imgs/`, `A_all_layer_data.npy` through `D_all_layer_data.npy`, `mouse_top_250_genes.csv` |
+
 ## 7. Train 3D STAG
 
 Run commands from the `3D/` directory.
@@ -211,10 +246,10 @@ cd 3D
 Each run trains one held-out slice fold. `--select_fold` chooses that fold.
 
 ```bash
-# STNet, fold 0 of 23, 50 epochs
+# STNet serial sections, fold 0 of 23, 50 epochs
 python main.py --config_name stnet --mode cv --select_fold 0 --gpu 0
 
-# HER2ST, fold 0 of 8, 60 epochs
+# HER2ST serial sections, fold 0 of 8, 60 epochs
 python main.py --config_name her2st --mode cv --select_fold 0 --gpu 0
 
 # Skin, fold 0 of 4, 20 epochs
@@ -233,6 +268,25 @@ To reproduce a full STNet cross-validation result:
 for f in $(seq 0 22); do
   python main.py --config_name stnet --mode cv --select_fold $f --gpu 0
 done
+```
+
+To run full cross-validation for every 3D dataset:
+
+```bash
+# STNet: folds 0-22
+for f in $(seq 0 22); do python main.py --config_name stnet --mode cv --select_fold $f --gpu 0; done
+
+# HER2ST: folds 0-7
+for f in $(seq 0 7); do python main.py --config_name her2st --mode cv --select_fold $f --gpu 0; done
+
+# Skin: folds 0-3
+for f in $(seq 0 3); do python main.py --config_name skin --mode cv --select_fold $f --gpu 0; done
+
+# PCW: folds 0-5
+for f in $(seq 0 5); do python main.py --config_name pcw --mode cv --select_fold $f --gpu 0; done
+
+# Mouse: folds 0-3
+for f in $(seq 0 3); do python main.py --config_name mouse --mode cv --select_fold $f --gpu 0; done
 ```
 
 Recommended settings:
