@@ -25,6 +25,15 @@ from dataset.HBCDataset import HBCDataset as Original_HBCDataset
 
 import torch.nn.functional as F
 
+
+class NullSummaryWriter:
+    def add_scalar(self, *args, **kwargs):
+        pass
+
+    def close(self):
+        pass
+
+
 def parse_args():
     parser = argparse.ArgumentParser(description="STAG-TextGuided HVG 预测训练脚本")
 
@@ -44,6 +53,9 @@ def parse_args():
     parser.add_argument('--batch_size', type=int, default=8, help="批处理大小")
     parser.add_argument('--seed', type=int, default=1553, help="随机种子")
     parser.add_argument('--num_workers', type=int, default=4, help="数据加载器工作进程数")
+    parser.add_argument('--save_checkpoints', action='store_true', help="Save best-fold model weights.")
+    parser.add_argument('--save_tensorboard', action='store_true', help="Save TensorBoard event files.")
+    parser.add_argument('--save_logs', action='store_true', help="Save full stdout training logs.")
 
     parser.add_argument('--loss_ratio1', type=float, default=0.4, help="目标Spot对比损失权重")
     parser.add_argument('--loss_ratio2', type=float, default=0.2, help="邻域对比损失权重")
@@ -201,7 +213,7 @@ def main():
     gene_mode_tag = f"_{args.gene_mode}" if args.gene_mode != 'default' else ""
     log_dir = f'./logs/{args.model_name}{gene_mode_tag}/{args.data_name}/{run_timestamp}'
     os.makedirs(log_dir, exist_ok=True)
-    tee = Tee(os.path.join(log_dir, 'training_log.txt'))
+    tee = Tee(os.path.join(log_dir, 'training_log.txt')) if args.save_logs else None
 
     print("=" * 60)
     print(f"K-Fold 训练脚本 for {args.model_name} (gene_mode={args.gene_mode})")
@@ -306,7 +318,7 @@ def main():
         scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda)
 
         mse_loss_fn = torch.nn.MSELoss()
-        writer = SummaryWriter(log_dir=os.path.join(log_dir, f'fold_{fold+1}'))
+        writer = SummaryWriter(log_dir=os.path.join(log_dir, f'fold_{fold+1}')) if args.save_tensorboard else NullSummaryWriter()
 
         best_fold_pcc = -1.0
         best_fold_metrics = {}
@@ -373,8 +385,9 @@ def main():
                 best_fold_pcc = val_metrics['pcc_all']
                 best_fold_metrics = val_metrics
                 no_improve_count = 0
-                print(f"   新的最佳PCC: {best_fold_pcc:.4f}! 模型已保存。")
-                torch.save(model.state_dict(), os.path.join(log_dir, f'best_fold_{fold+1}.pth'))
+                print(f"   Best PCC updated: {best_fold_pcc:.4f}.")
+                if args.save_checkpoints:
+                    torch.save(model.state_dict(), os.path.join(log_dir, f'best_fold_{fold+1}.pth'))
             else:
                 no_improve_count += 1
                 if args.patience > 0 and no_improve_count >= args.patience:
@@ -397,7 +410,8 @@ def main():
         print(f"平均 PCC (所有基因): {mean_pcc:.4f} +/- {std_pcc:.4f}")
         print("=" * 56)
 
-    tee.close()
+    if tee is not None:
+        tee.close()
 
 if __name__ == '__main__':
     main()

@@ -16,6 +16,15 @@ from dataset.NewcSCCDataset import cSCCDataset
 from dataset.NewHER2Dataset import HER2Dataset
 from dataset.NewHESTDataset import HESTDataset, get_full_kfold_splits, get_all_subset_names
 
+
+class NullSummaryWriter:
+    def add_scalar(self, *args, **kwargs):
+        pass
+
+    def close(self):
+        pass
+
+
 def parse_args():
     parser = argparse.ArgumentParser(description="通用 K-Fold 交叉验证训练脚本 (支持 STAG)")
     
@@ -39,6 +48,9 @@ def parse_args():
     parser.add_argument('--batch_size', type=int, default=16, help="批处理大小")
     parser.add_argument('--seed', type=int, default=1553, help="用于K折划分和随机操作的种子")
     parser.add_argument('--num_workers', type=int, default=4, help="数据加载器使用的工作进程数")
+    parser.add_argument('--save_checkpoints', action='store_true', help="Save best-fold model weights.")
+    parser.add_argument('--save_tensorboard', action='store_true', help="Save TensorBoard event files.")
+    parser.add_argument('--save_logs', action='store_true', help="Save full stdout training logs.")
 
     parser.add_argument('--loss_ratio1', type=float, default=0.4, help="目标Spot对比损失的权重")
     parser.add_argument('--loss_ratio2', type=float, default=0.2, help="邻域对比损失的权重")
@@ -149,7 +161,7 @@ def main():
     log_dir = f'./logs/{args.model_name}/{args.data_name}/{run_timestamp}'
     os.makedirs(log_dir, exist_ok=True)
     
-    tee = Tee(os.path.join(log_dir, 'training_log.txt'))
+    tee = Tee(os.path.join(log_dir, 'training_log.txt')) if args.save_logs else None
     
     print("=" * 60)
     print(f"K-Fold 交叉验证训练脚本 for {args.model_name}")
@@ -267,7 +279,7 @@ def main():
         optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
         mse_loss_fn = torch.nn.MSELoss()
         
-        writer = SummaryWriter(log_dir=os.path.join(log_dir, f'fold_{fold+1}'))
+        writer = SummaryWriter(log_dir=os.path.join(log_dir, f'fold_{fold+1}')) if args.save_tensorboard else NullSummaryWriter()
         
         best_fold_pcc = -1.0
         best_fold_metrics = {}
@@ -329,10 +341,11 @@ def main():
             if val_metrics['pcc_all'] > best_fold_pcc:
                 best_fold_pcc = val_metrics['pcc_all']
                 best_fold_metrics = val_metrics
-                print(f"   🎉 新的最佳PCC: {best_fold_pcc:.4f}！模型已保存。")
-                save_model = model.module if isinstance(model, torch.nn.DataParallel) else model
-                model_save_path = os.path.join(log_dir, f'{args.model_name}_{args.data_name}_best_fold_{fold+1}.pth')
-                torch.save(save_model.state_dict(), model_save_path)
+                print(f"   Best PCC updated: {best_fold_pcc:.4f}.")
+                if args.save_checkpoints:
+                    save_model = model.module if isinstance(model, torch.nn.DataParallel) else model
+                    model_save_path = os.path.join(log_dir, f'{args.model_name}_{args.data_name}_best_fold_{fold+1}.pth')
+                    torch.save(save_model.state_dict(), model_save_path)
 
         if best_fold_metrics:
             best_fold_metrics['fold'] = fold + 1
@@ -351,7 +364,8 @@ def main():
         print(f"平均 PCC (所有基因): {mean_pcc:.4f} ± {std_pcc:.4f}")
         print("=" * 56)
             
-    tee.close()
+    if tee is not None:
+        tee.close()
 
 if __name__ == '__main__':
     main()

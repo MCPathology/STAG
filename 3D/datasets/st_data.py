@@ -122,7 +122,7 @@ class STDataset(BaselineDataset):
             end_idx = start_idx + fold_size if fold < num_folds - 1 else len(patients)
             te_names.extend(patients[start_idx:end_idx])
         
-        tr_names = list(set(names) - set(te_names))
+        tr_names = [name for name in names if name not in te_names]
         print(f"tests: {te_names}")
         print(f"train: {tr_names}")
         if self.mode == 'train':

@@ -22,6 +22,8 @@ def get_parse():
     parser.add_argument('--fold', type=int, default=0, help='')
     parser.add_argument('--model_path', type=str, default='results/xxxxx.ckpt', help='')
     parser.add_argument('--select_fold', type=int, default=0, help='')
+    parser.add_argument('--save_checkpoints', action='store_true', help='Save Lightning checkpoints.')
+    parser.add_argument('--save_tensorboard', action='store_true', help='Save TensorBoard event files.')
     args = parser.parse_args()
     return args
 
@@ -72,6 +74,7 @@ def main(cfg, fold=0):
             devices = gpus,
             max_epochs = num_epochs,
             logger = loggers,
+            enable_checkpointing=bool(cfg.GENERAL.save_checkpoints),
             check_val_every_n_epoch = 1,
             log_every_n_steps=10,
             precision=16
@@ -93,6 +96,8 @@ if __name__ == '__main__':
     cfg.GENERAL.gpu = args.gpu
     cfg.GENERAL.model_path = args.model_path
     cfg.GENERAL.mode = args.mode
+    cfg.GENERAL.save_checkpoints = args.save_checkpoints
+    cfg.GENERAL.save_tensorboard = args.save_tensorboard
     current_day = datetime.now().strftime('%Y-%m-%d')
     cfg.GENERAL.current_day = current_day
     if args.mode == 'cv':

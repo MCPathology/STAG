@@ -1,113 +1,178 @@
-# STAG — 2D Spatial Transcriptomics Prediction
+# STAG 2D Training
 
-The main STAG model for per-slice gene-expression prediction from histopathology patches.
+This folder contains the 2D STAG model for spot-level spatial gene-expression
+prediction from histopathology image patches. Run all commands from this `2D/`
+directory so that the relative paths in the dataset loaders resolve correctly.
 
-## Directory Structure
-
-```
-2D/
-├── models/models/
-│   ├── model_Hypergraph_Text.py   # STAG with gene semantic (OmiCLIP) encoder  ← main model
-│   ├── model_Hypergraph.py        # STAG without text encoder (variant)
-│   └── module.py                  # building blocks (hypergraph conv, cross-attention, decoder)
-├── dataset/
-│   ├── Text{cSCC,HER2,HBC,HEST}Dataset.py   # datasets with gene text embeddings
-│   ├── New{cSCC,HBC,HER2,HEST}Dataset.py    # datasets for the no-text variant
-│   └── {cSCC,HER2,HBC,HEST}dataset.py       # base loaders
-├── preprocess/                    # gene-panel selection + text-encoding pipeline
-├── select_genes/                  # bundled gene panels + precomputed text encodings
-├── scripts/                       # example run scripts
-├── train_STAG.py        # ★ main training entry (STAG + text)
-├── train_STAG_notext.py                 # training entry (STAG, no text)
-├── train_STAG_hvg.py              # HVG gene-panel experiment
-├── train_ab.py                    # architecture ablation (query branch components)
-├── ablation_encoder_cSCC.py       # encoder ablation (ResNet/UNI/CONCH × MLP/SNN/Geneformer)
-├── ablation_gnn_cSCC.py           # GNN ablation (HGNN vs GCN vs GAT)
-└── train_geneformer_ablation.py   # Geneformer text-encoder ablation
-```
-
-## Installation
+## Environment
 
 ```bash
+cd 2D
 pip install -r requirements.txt
 ```
 
-Key dependencies: `torch`, `torch-geometric`, `einops`, `scikit-learn`, `scipy`,
-`pandas`, `tqdm`, `tensorboard`. The Geneformer ablation additionally needs
-`transformers` and `mygene`; the OmiCLIP/Loki text-encoding preprocessing needs the
-external [Loki/OmiCLIP](https://github.com/GuangyuWangLab2021/Loki) package.
+The model uses a self-supervised ResNet18 backbone. If
+`weights/tenpercent_resnet18.ckpt` is not present, the code downloads it on the
+first run.
 
-## Data Preparation
+## Data Layout
 
-1. **Gene panels & text encodings** — already bundled in [`select_genes/`](select_genes/)
-   (gene lists `*_Selected_Genes.npy`, OmiCLIP encodings `*_loki_text_encode.npy`,
-   BERT encodings `*_bert_text_encode.npy`). No action needed.
+Place the 2D data under `2D/data/`:
 
-2. **Raw ST datasets** — download from the original sources and place under `./data/`:
-
-   ```
-   2D/data/
-   ├── GSE144240/                                                 # cSCC
-   ├── HER2/                                                      # her2st
-   ├── Human_breast_cancer_in_situ_capturing_transcriptomics/    # HBC
-   └── Hest1k_datasets/                                           # HEST-1k subsets
-   ```
-
-   All paths use the `./data/...` convention. **Run all commands from the `2D/`
-   directory** so the relative paths resolve. If your data lives elsewhere, edit the
-   `DATA_PATHS` dict at the top of each training script (or pass the dataset path).
-
-## Training
-
-Run from the `2D/` directory.
-
-### Main STAG (with gene semantic encoder)
-
-```bash
-python train_STAG.py --data_name cSCC \
-    --emb_dim 512 --depth 2 --heads 8 \
-    --k_folds 5 --epochs 50 --lr 1e-4 --batch_size 8 \
-    --loss_ratio1 0.4 --loss_ratio2 0.2 --temp1 0.05 --temp2 0.05
+```text
+2D/data/
+├── GSE144240/                                               # cSCC
+├── HER2/                                                    # HER2ST
+├── Human_breast_cancer_in_situ_capturing_transcriptomics/  # HBC
+└── Hest1k_datasets/                                         # HEST-1k subsets
 ```
 
-`--data_name` ∈ `{cSCC, HER2, HBC, HEST_LUAD, HEST_IDC, HEST_PAAD, HEST_SKCM, HEST_kidney, HEST_mouse_brain, HEST_PRAD, ...}`.
+Expected files:
 
-### STAG without text encoder
+```text
+GSE144240/
+├── *.jpg
+├── *_stdata.tsv
+└── *_spot_data-selection-P*.tsv
 
-```bash
-python train_STAG_notext.py --data_name cSCC --k_folds 5 --epochs 50
+HER2/
+├── images/HE/*.jpg
+├── count-matrices/*.tsv
+└── spot-selection/*_selection.tsv
+
+Human_breast_cancer_in_situ_capturing_transcriptomics/
+├── *.jpg
+├── *_stdata.tsv
+└── spots_*.csv
+
+Hest1k_datasets/<subset>/
+├── st/*.h5ad
+└── wsis/*.tif
 ```
 
-## Ablations (paper)
+Gene panels and gene-text embeddings are stored in `2D/select_genes/` and are
+loaded automatically by the training scripts.
+
+## Split Protocol
+
+All 2D splits are sample-level splits. Spots from the same WSI/sample are never
+split across train and validation folds.
+
+| Dataset family | Split unit | Split implementation | Default seed |
+|---|---|---|---:|
+| cSCC (`GSE144240`) | `.jpg` WSI files under `GSE144240/` | `KFold(..., shuffle=True)` over sorted image files | 1553 |
+| HER2ST (`HER2`) | `.jpg` WSI files under `HER2/images/HE/` | `KFold(..., shuffle=True)` over sorted image files | 1553 |
+| HBC | `.jpg` WSI files under `Human_breast_cancer_in_situ_capturing_transcriptomics/` | `KFold(..., shuffle=True)` over sorted image files | 1553 |
+| HEST-1k subsets | sample IDs from `Hest1k_datasets/<subset>/st/*.h5ad` | `KFold(..., shuffle=True)` over sorted sample IDs | 1553 |
+
+The generated split JSON records the exact train/validation files and is saved
+under the run output directory. Reusing the same `--k_folds` and `--seed` reloads
+the same split file.
+
+## Default Outputs
+
+The public training scripts are configured to keep the release lightweight:
+
+- Saved by default: fold split JSON files and `kfold_summary*.csv` metrics.
+- Not saved by default: model checkpoints, TensorBoard event files, full stdout logs.
+
+Optional output flags:
 
 ```bash
-# Hypergraph vs GCN vs GAT
-python ablation_gnn_cSCC.py --gnn_type hgnn      # or gcn / gat
-
-# Expression / image encoder ablation (Table 8)
-python ablation_encoder_cSCC.py --img_encoder resnet18 --exp_encoder mlp   # baseline
-python ablation_encoder_cSCC.py --img_encoder resnet18 --exp_encoder snn
+--save_checkpoints   # save best-fold .pth files
+--save_tensorboard   # save TensorBoard event files
+--save_logs          # save training_log.txt
 ```
 
-### Geneformer expression-encoder ablation
+## Main STAG Training
+
+Use `train_STAG.py` for the main text-guided STAG model.
+
+Recommended settings used for the 2D release:
+
+| Dataset | `--data_name` | Folds | Epochs | Batch size |
+|---|---:|---:|---:|---:|
+| cSCC | `cSCC` | 4 | 50 | 8 |
+| HER2ST | `HER2` | 6 | 50 | 8 |
+| HBC | `HBC` | 9 | 50 | 8 |
+| HEST-PRAD | `HEST_PRAD` | 6 | 50 | 8 |
+| HEST-kidney | `HEST_kidney` | 6 | 50 | 8 |
+| HEST-mouse-brain | `HEST_mouse_brain` | 5 | 50 | 8 |
+
+Examples:
 
 ```bash
-# 1) precompute frozen Geneformer per-spot embeddings (full transcriptome)
-python preprocess/extract_geneformer_cell_embeddings.py \
-    --data_path ./data/GSE144240 \
-    --output_dir ./data/GSE144240/geneformer_emb \
-    --model_dir ./Geneformer --model_variant v1-10m --batch_size 64
+# cSCC, 4-fold CV
+python train_STAG.py --data_name cSCC --k_folds 4 --epochs 50 --batch_size 8
 
-# 2) train with frozen Geneformer + trainable projection MLP
-python ablation_encoder_cSCC.py --img_encoder resnet18 --exp_encoder geneformer \
-    --geneformer_emb_dir ./data/GSE144240/geneformer_emb --geneformer_dim 256
+# HER2ST, 6-fold CV
+python train_STAG.py --data_name HER2 --k_folds 6 --epochs 50 --batch_size 8
+
+# HBC, 9-fold CV
+python train_STAG.py --data_name HBC --k_folds 9 --epochs 50 --batch_size 8
+
+# HEST-PRAD, 6-fold CV
+python train_STAG.py --data_name HEST_PRAD --k_folds 6 --epochs 50 --batch_size 8
 ```
 
-The Geneformer model weights/dictionaries are obtained by cloning the official
-[Geneformer](https://huggingface.co/ctheodoris/Geneformer) repo into `./Geneformer/`.
+The script evaluates every epoch and reports the best validation metrics for each
+fold in the final CSV.
+
+## No-Text Variant
+
+Use `train_STAG_notext.py` for the STAG variant without gene-text embeddings:
+
+```bash
+python train_STAG_notext.py --data_name cSCC --k_folds 4 --epochs 50 --batch_size 16
+python train_STAG_notext.py --data_name HER2 --k_folds 6 --epochs 50 --batch_size 16
+python train_STAG_notext.py --data_name HBC --k_folds 9 --epochs 50 --batch_size 16
+```
+
+## HVG Experiments
+
+Use `train_STAG_hvg.py` for HVG gene-panel experiments. This entry currently
+supports `cSCC`, `HER2`, and `HBC`.
+
+Recommended HVG settings:
+
+| Dataset | `--data_name` | Folds | Epochs | Batch size |
+|---|---:|---:|---:|---:|
+| cSCC | `cSCC` | 4 | 80 | 8 |
+| HER2ST | `HER2` | 6 | 80 | 8 |
+| HBC | `HBC` | 9 | 80 | 8 |
+
+Examples:
+
+```bash
+python train_STAG_hvg.py --data_name cSCC --k_folds 4 --epochs 80 --batch_size 8 --gene_mode hvg
+python train_STAG_hvg.py --data_name HER2 --k_folds 6 --epochs 80 --batch_size 8 --gene_mode hvg
+python train_STAG_hvg.py --data_name HBC --k_folds 9 --epochs 80 --batch_size 8 --gene_mode hvg
+```
+
+To run a single fold for debugging:
+
+```bash
+python train_STAG_hvg.py --data_name HER2 --k_folds 6 --select_fold 0 --epochs 1 --batch_size 2
+```
+
+## Ablations
+
+```bash
+# Query/attention/contrastive ablation
+python train_ab.py --data_name cSCC --k_folds 4 --epochs 50 --batch_size 8
+
+# Geneformer text-encoder ablation
+python train_geneformer_ablation.py --data_name cSCC --k_folds 4 --epochs 50 --batch_size 8
+
+# Encoder and GNN ablations write per-fold and summary CSV files.
+python ablation_encoder_cSCC.py --img_encoder resnet18 --exp_encoder mlp
+python ablation_gnn_cSCC.py --gnn_type hgnn
+```
 
 ## Notes
 
-- Comments and docstrings have been stripped from the source for the public release.
-- HEST subset directory casing may differ (`Hest1k_datasets` vs `hest1k_datasets`);
-  adjust to match your local layout.
+- HEST support depends on matching gene-list and text-embedding files in
+  `select_genes/`. If you add a new HEST subset, add both files and update the
+  mapping in `train_STAG.py`.
+- Large raw datasets should not be committed directly to GitHub. Keep full data in
+  an external release and place only a small toy example in the repository.

@@ -20,6 +20,14 @@ from dataset.cSCCDataset import cSCCDataset as Original_cSCCDataset
 import torch.nn.functional as F
 
 
+class NullSummaryWriter:
+    def add_scalar(self, *args, **kwargs):
+        pass
+
+    def close(self):
+        pass
+
+
 def parse_args():
     parser = argparse.ArgumentParser(description="Geneformer vs OmiCLIP text encoder ablation")
 
@@ -36,6 +44,9 @@ def parse_args():
     parser.add_argument('--batch_size', type=int, default=8)
     parser.add_argument('--seed', type=int, default=1553)
     parser.add_argument('--num_workers', type=int, default=4)
+    parser.add_argument('--save_checkpoints', action='store_true', help="Save best-fold model weights.")
+    parser.add_argument('--save_tensorboard', action='store_true', help="Save TensorBoard event files.")
+    parser.add_argument('--save_logs', action='store_true', help="Save full stdout training logs.")
 
     parser.add_argument('--loss_ratio1', type=float, default=0.4)
     parser.add_argument('--loss_ratio2', type=float, default=0.2)
@@ -147,7 +158,7 @@ def main():
 
     log_dir = f'./logs/{args.model_name}_ablation_textenc/{args.text_encoder}/{run_timestamp}'
     os.makedirs(log_dir, exist_ok=True)
-    tee = Tee(os.path.join(log_dir, 'training_log.txt'))
+    tee = Tee(os.path.join(log_dir, 'training_log.txt')) if args.save_logs else None
 
     print("=" * 60)
     print(f"Text Encoder Ablation: {args.text_encoder}")
@@ -206,7 +217,7 @@ def main():
 
         optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
         mse_loss_fn = torch.nn.MSELoss()
-        writer = SummaryWriter(log_dir=os.path.join(log_dir, f'fold_{fold+1}'))
+        writer = SummaryWriter(log_dir=os.path.join(log_dir, f'fold_{fold+1}')) if args.save_tensorboard else NullSummaryWriter()
 
         best_fold_pcc = -1.0
         best_fold_metrics = {}
@@ -252,8 +263,9 @@ def main():
             if val_metrics['pcc_all'] > best_fold_pcc:
                 best_fold_pcc = val_metrics['pcc_all']
                 best_fold_metrics = val_metrics
-                print(f"   Best PCC: {best_fold_pcc:.4f}! Model saved.")
-                torch.save(model.state_dict(), os.path.join(log_dir, f'best_fold_{fold+1}.pth'))
+                print(f"   Best PCC updated: {best_fold_pcc:.4f}.")
+                if args.save_checkpoints:
+                    torch.save(model.state_dict(), os.path.join(log_dir, f'best_fold_{fold+1}.pth'))
 
         if best_fold_metrics:
             best_fold_metrics['fold'] = fold + 1
@@ -273,7 +285,8 @@ def main():
         print(f"MAE:     {df['mae'].mean():.4f} +/- {df['mae'].std():.4f}")
         print(f"{'='*60}")
 
-    tee.close()
+    if tee is not None:
+        tee.close()
 
 
 if __name__ == '__main__':

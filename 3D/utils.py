@@ -23,16 +23,17 @@ def load_config(config_name: str):
 def load_loggers(cfg: Dict):
     log_path = os.path.join(cfg.GENERAL.log_path, cfg.GENERAL.current_day)
 
-    tb_logger = TensorBoardLogger(
-        log_path,
-        name = cfg.GENERAL.log_name
-    )
-
     csv_logger = CSVLogger(
         log_path,
         name = cfg.GENERAL.log_name)
     
-    loggers = [tb_logger, csv_logger]
+    loggers = [csv_logger]
+    if cfg.GENERAL.get('save_tensorboard', False):
+        tb_logger = TensorBoardLogger(
+            log_path,
+            name = cfg.GENERAL.log_name
+        )
+        loggers.append(tb_logger)
     
     return loggers
 
