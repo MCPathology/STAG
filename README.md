@@ -3,29 +3,32 @@
 > Under review. Dataset download links will be made publicly available upon
 > acceptance of the manuscript.
 
-STAG predicts spatial gene expression from histopathology images. This release
-contains two training pipelines:
+STAG predicts spatial gene expression from histopathology images. The repository
+contains two pipelines:
 
-- `2D/`: spot-level prediction from single-section H&E image patches.
+- `2D/`: single-section spot-level prediction from H&E image patches.
 - `3D/`: pseudo-3D prediction from preprocessed serial-section graph data.
 
-Detailed instructions are provided in [`2D/README.md`](2D/README.md) and
-[`3D/README.md`](3D/README.md). Full documentation is available in
+Use this page as the quick-start guide. More detailed notes are in
+[`2D/README.md`](2D/README.md), [`3D/README.md`](3D/README.md), and
 [`DOCS.md`](DOCS.md).
 
-## Repository Layout
+## 1. Choose the Pipeline
 
-```text
-STAG/
-|-- 2D/                 # 2D STAG training, datasets, models, and ablations
-|-- 3D/                 # pseudo-3D STAG training and serial-section datasets
-|-- DOCS.md             # extended documentation
-`-- README.md
-```
+| Pipeline | Use case | Main entry |
+|---|---|---|
+| 2D STAG | Predict gene expression from one spatial transcriptomics section | `2D/train_STAG.py` |
+| 2D no-text variant | Run STAG without gene-text embeddings | `2D/train_STAG_notext.py` |
+| 2D HVG variant | Train/evaluate on HVG gene panels | `2D/train_STAG_hvg.py` |
+| 3D STAG | Use serial-section pseudo-3D context | `3D/main.py` |
 
-## Installation
+By default, the release saves metrics and fold splits only. Checkpoints and
+TensorBoard files are optional flags so that routine runs do not create large
+output folders.
 
-Install dependencies inside the subfolder you want to run:
+## 2. Install Dependencies
+
+Install dependencies inside the subfolder you want to run.
 
 ```bash
 # 2D experiments
@@ -37,13 +40,13 @@ cd ../3D
 pip install -r requirements.txt
 ```
 
-The self-supervised ResNet18 backbone weight is expected at
-`weights/tenpercent_resnet18.ckpt`. If it is missing, the code downloads it on
-the first run.
+The image encoder uses a self-supervised ResNet18 checkpoint at
+`weights/tenpercent_resnet18.ckpt`. If the file is missing, the code attempts to
+download it on the first run.
 
-## 2D Data
+## 3. Prepare 2D Data
 
-Place the 2D datasets under `2D/data/`:
+Put the 2D data under `2D/data/`.
 
 ```text
 2D/data/
@@ -76,32 +79,20 @@ Hest1k_datasets/<subset>/
 `-- wsis/*.tif
 ```
 
-Gene panels and gene-text embeddings are stored in `2D/select_genes/` and are
-loaded automatically by the training scripts.
+Gene panels and gene-text embeddings are already expected in `2D/select_genes/`
+and are loaded automatically by the training scripts.
 
-## 2D Splits
+## 4. Train 2D STAG
 
-All 2D splits are sample-level splits. Spots from the same WSI/sample are never
-split across train and validation folds.
-
-| Dataset family | Split unit | Split implementation | Default seed |
-|---|---|---|---:|
-| cSCC (`GSE144240`) | `.jpg` WSI files under `GSE144240/` | `KFold(..., shuffle=True)` over sorted image files | 1553 |
-| HER2ST (`HER2`) | `.jpg` WSI files under `HER2/images/HE/` | `KFold(..., shuffle=True)` over sorted image files | 1553 |
-| HBC | `.jpg` WSI files under the HBC folder | `KFold(..., shuffle=True)` over sorted image files | 1553 |
-| HEST-1k subsets | sample IDs from `Hest1k_datasets/<subset>/st/*.h5ad` | `KFold(..., shuffle=True)` over sorted sample IDs | 1553 |
-
-The generated split JSON records the exact train/validation files and is saved
-under the run output directory. Reusing the same `--k_folds` and `--seed` reloads
-the same split file.
-
-## 2D Training
-
-Run commands from the `2D/` directory:
+Run all commands from the `2D/` directory.
 
 ```bash
 cd 2D
+```
 
+Recommended full cross-validation commands:
+
+```bash
 # cSCC, 4-fold CV, 50 epochs
 python train_STAG.py --data_name cSCC --k_folds 4 --epochs 50 --batch_size 8
 
@@ -113,9 +104,15 @@ python train_STAG.py --data_name HBC --k_folds 9 --epochs 50 --batch_size 8
 
 # HEST-PRAD, 6-fold CV, 50 epochs
 python train_STAG.py --data_name HEST_PRAD --k_folds 6 --epochs 50 --batch_size 8
+
+# HEST-kidney, 6-fold CV, 50 epochs
+python train_STAG.py --data_name HEST_kidney --k_folds 6 --epochs 50 --batch_size 8
+
+# HEST-mouse-brain, 5-fold CV, 50 epochs
+python train_STAG.py --data_name HEST_mouse_brain --k_folds 5 --epochs 50 --batch_size 8
 ```
 
-Recommended release settings:
+Recommended settings:
 
 | Dataset | `--data_name` | Folds | Epochs | Batch size |
 |---|---:|---:|---:|---:|
@@ -126,22 +123,42 @@ Recommended release settings:
 | HEST-kidney | `HEST_kidney` | 6 | 50 | 8 |
 | HEST-mouse-brain | `HEST_mouse_brain` | 5 | 50 | 8 |
 
-For the no-text variant:
+To run a quick smoke test, reduce the epoch count and batch size:
 
 ```bash
-python train_STAG_notext.py --data_name cSCC --k_folds 4 --epochs 50 --batch_size 16
+python train_STAG.py --data_name cSCC --k_folds 4 --epochs 1 --batch_size 2
 ```
 
-For HVG experiments:
+Additional 2D variants:
 
 ```bash
+# No gene-text embeddings
+python train_STAG_notext.py --data_name cSCC --k_folds 4 --epochs 50 --batch_size 16
+
+# HVG gene panel
 python train_STAG_hvg.py --data_name HER2 --k_folds 6 --epochs 80 --batch_size 8 --gene_mode hvg
 ```
 
-## 3D Data
+## 5. 2D Split Protocol
+
+All 2D splits are sample-level splits. Spots from the same WSI/sample are never
+split across train and validation folds.
+
+| Dataset family | Split unit | Split implementation | Default seed |
+|---|---|---|---:|
+| cSCC (`GSE144240`) | `.jpg` WSI files under `GSE144240/` | `KFold(..., shuffle=True)` over sorted image files | 1553 |
+| HER2ST (`HER2`) | `.jpg` WSI files under `HER2/images/HE/` | `KFold(..., shuffle=True)` over sorted image files | 1553 |
+| HBC | `.jpg` WSI files under the HBC folder | `KFold(..., shuffle=True)` over sorted image files | 1553 |
+| HEST-1k subsets | sample IDs from `Hest1k_datasets/<subset>/st/*.h5ad` | `KFold(..., shuffle=True)` over sorted sample IDs | 1553 |
+
+The generated split JSON records the exact train/validation files. Reusing the
+same `--k_folds` and `--seed` reloads the same split.
+
+## 6. Prepare 3D Data
 
 The 3D pipeline uses preprocessed serial-section data, not raw WSI folders. Each
-config file in `3D/config/` points to one preprocessed dataset folder.
+YAML file in `3D/config/` points to one preprocessed dataset folder through
+`DATASET.data_dir`.
 
 Expected structure:
 
@@ -152,11 +169,83 @@ Expected structure:
 `-- <dataset>_top_250_genes.csv
 ```
 
-The `*_all_layer_data.npy` files are Python dictionaries containing serial-layer
-neighbors and cropped patch names. See [`3D/README.md`](3D/README.md) for the
-exact dictionary format.
+Each `*_all_layer_data.npy` file is a Python dictionary saved with
+`np.save(..., allow_pickle=True)`. It stores serial-section neighbor entries:
 
-## 3D Splits
+```python
+{
+    row_key: {
+        layer_key: {
+            "gene_expressions": [...],
+            "cropped_image_names": [...]
+        }
+    }
+}
+```
+
+Required preprocessed folders:
+
+```text
+3D/stnet_dataset_normal_smooth/
+|-- cropped_imgs/
+|-- A_all_layer_data.npy ... W_all_layer_data.npy
+`-- stnet_top_250_genes.csv
+
+3D/her2st_heg250_dataset/
+|-- cropped_imgs/
+|-- A_all_layer_data.npy ... H_all_layer_data.npy
+`-- her2st_top_250_genes.csv
+```
+
+Other 3D configs follow the same format. See [`3D/README.md`](3D/README.md) for
+the full list.
+
+## 7. Train 3D STAG
+
+Run commands from the `3D/` directory.
+
+```bash
+cd 3D
+```
+
+Each run trains one held-out slice fold. `--select_fold` chooses that fold.
+
+```bash
+# STNet, fold 0 of 23, 50 epochs
+python main.py --config_name stnet --mode cv --select_fold 0 --gpu 0
+
+# HER2ST, fold 0 of 8, 60 epochs
+python main.py --config_name her2st --mode cv --select_fold 0 --gpu 0
+
+# Skin, fold 0 of 4, 20 epochs
+python main.py --config_name skin --mode cv --select_fold 0 --gpu 0
+
+# PCW, fold 0 of 6, 20 epochs
+python main.py --config_name pcw --mode cv --select_fold 0 --gpu 0
+
+# Mouse, fold 0 of 4, 40 epochs
+python main.py --config_name mouse --mode cv --select_fold 0 --gpu 0
+```
+
+To reproduce a full STNet cross-validation result:
+
+```bash
+for f in $(seq 0 22); do
+  python main.py --config_name stnet --mode cv --select_fold $f --gpu 0
+done
+```
+
+Recommended settings:
+
+| Config | Data folder | Folds | Epochs | Batch size |
+|---|---|---:|---:|---:|
+| `stnet` | `stnet_dataset_normal_smooth` | 23 | 50 | 16 |
+| `her2st` | `her2st_heg250_dataset` | 8 | 60 | 1 |
+| `skin` | `skin_dataset_normal_smooth` | 4 | 20 | 4 |
+| `pcw` | `pcw_dataset_normal_smooth` | 6 | 20 | 2 |
+| `mouse` | `mouse_dataset_normal_smooth` | 4 | 40 | 2 |
+
+## 8. 3D Split Protocol
 
 All 3D experiments use slice-level cross-validation. A held-out fold contains
 one slice name, and all spots/layer entries from that slice are used for testing.
@@ -170,54 +259,33 @@ The remaining slices are used for training.
 | `pcw` | `A, B, C, D, E, F` | 6 |
 | `mouse` | `A, B, C, D` | 4 |
 
-## 3D Training
+## 9. Outputs
 
-Run commands from the `3D/` directory. `--select_fold` chooses the held-out slice
-fold.
+Default outputs are intentionally lightweight:
 
-```bash
-cd 3D
-
-# STNet, 23 folds, 50 epochs
-python main.py --config_name stnet --mode cv --select_fold 0 --gpu 0
-
-# HER2ST, 8 folds, 60 epochs
-python main.py --config_name her2st --mode cv --select_fold 0 --gpu 0
-
-# Skin, 4 folds, 20 epochs
-python main.py --config_name skin --mode cv --select_fold 0 --gpu 0
-
-# PCW, 6 folds, 20 epochs
-python main.py --config_name pcw --mode cv --select_fold 0 --gpu 0
-
-# Mouse, 4 folds, 40 epochs
-python main.py --config_name mouse --mode cv --select_fold 0 --gpu 0
-```
-
-To run all STNet folds:
-
-```bash
-for f in $(seq 0 22); do
-  python main.py --config_name stnet --mode cv --select_fold $f --gpu 0
-done
-```
-
-## Outputs
-
-The public release saves metrics only by default.
-
-- 2D: split JSON files and `kfold_summary*.csv` metrics.
+- 2D: fold split JSON files and `kfold_summary*.csv` metrics.
 - 3D: CSV logs under `3D/logs/<date>/<run_name>/`.
 - Not saved by default: model checkpoints, TensorBoard events, and full stdout
   logs.
 
-Optional output flags:
+Optional flags:
 
 ```bash
---save_checkpoints
---save_tensorboard
---save_logs          # 2D only
+--save_checkpoints   # save model checkpoints
+--save_tensorboard   # save TensorBoard event files
+--save_logs          # 2D only; save training_log.txt
 ```
 
+If checkpoints are enabled for 3D, test a checkpoint with:
+
+```bash
+cd 3D
+python main.py --config_name stnet --mode test --model_path logs/<date>/<run_name>/<checkpoint>.ckpt --gpu 0
+```
+
+## 10. Data Release Note
+
 Large raw datasets and preprocessed serial-section folders should be distributed
-as external archives rather than committed directly to GitHub.
+as external archives rather than committed directly to GitHub. For code-only
+releases, keep the folder structure above and place downloaded data in the
+corresponding paths before training.
