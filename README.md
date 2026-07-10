@@ -36,12 +36,12 @@ expression directly from the histology image.
 
 ## Pipeline Overview
 
-| Pipeline | What it does | Main script |
-|---|---|---|
-| 2D STAG | Predicts gene expression from one spatial transcriptomics section | `2D/train_STAG.py` |
-| 2D no-text variant | Runs STAG without gene-text embeddings | `2D/train_STAG_notext.py` |
-| 2D HVG variant | Runs STAG on HVG gene panels | `2D/train_STAG_hvg.py` |
-| 3D STAG | Uses serial-section pseudo-3D context | `3D/main.py` |
+| Pipeline | Purpose | Entry point |
+|:--|:--|:--|
+| **2D STAG** | Single-section gene-expression prediction | [`2D/train_STAG.py`](2D/train_STAG.py) |
+| **2D STAG, no text** | Ablation without gene-text embeddings | [`2D/train_STAG_notext.py`](2D/train_STAG_notext.py) |
+| **2D STAG, HVG** | Prediction on highly variable gene panels | [`2D/train_STAG_hvg.py`](2D/train_STAG_hvg.py) |
+| **3D STAG** | Pseudo-3D prediction with serial-section context | [`3D/main.py`](3D/main.py) |
 
 By default, training saves metrics and fold splits only. Checkpoints,
 TensorBoard files, and full stdout logs are optional flags.
@@ -103,20 +103,24 @@ Hest1k_datasets/<subset>/
 
 Gene panels and gene-text embeddings are loaded from `2D/select_genes/`.
 
-### 2D Dataset Table
+### 2D Datasets
 
-The following datasets are configured for the text-guided `train_STAG.py`
-entry.
+The following settings are configured for the text-guided
+[`train_STAG.py`](2D/train_STAG.py) entry point.
 
-| Dataset | `--data_name` | Data folder | Required files | Processed data package |
-|---|---|---|---|---|
-| cSCC | `cSCC` | `2D/data/GSE144240/` | `*.jpg`, `*_stdata.tsv`, `*_spot_data-selection-P*.tsv` | `STAG-2D-GSE144240.tar.zst` |
-| HER2ST | `HER2` | `2D/data/HER2/` | `images/HE/*.jpg`, `count-matrices/*.tsv`, `spot-selection/*_selection.tsv` | `STAG-2D-HER2.tar.zst` |
-| HBC | `HBC` | `2D/data/Human_breast_cancer_in_situ_capturing_transcriptomics/` | `*.jpg`, `*_stdata.tsv`, `spots_*.csv` | `STAG-2D-HBC.tar.zst` |
-| HEST-kidney | `HEST_kidney` | `2D/data/Hest1k_datasets/kidney/` | `st/*.h5ad`, `wsis/*.tif` | `STAG-2D-HEST-kidney.tar.zst` |
-| HEST-mouse-brain | `HEST_mouse_brain` | `2D/data/Hest1k_datasets/mouse_brain/` | `st/*.h5ad`, `wsis/*.tif` | `STAG-2D-HEST-mouse_brain.tar.zst` |
-| HEST-PRAD | `HEST_PRAD` | `2D/data/Hest1k_datasets/PRAD/` | `st/*.h5ad`, `wsis/*.tif` | `STAG-2D-HEST-PRAD.tar.zst` |
-| HEST-LUAD | `HEST_LUAD` | `2D/data/Hest1k_datasets/hest_data_LUAD/` | `st/*.h5ad`, `wsis/*.tif` | Not included in the processed release package. |
+| Dataset | `--data_name` | Folds | Epochs | Batch |
+|:--|:--|--:|--:|--:|
+| **cSCC** | `cSCC` | 4 | 50 | 8 |
+| **HER2ST** | `HER2` | 6 | 50 | 8 |
+| **HBC** | `HBC` | 9 | 50 | 8 |
+| **HEST kidney** | `HEST_kidney` | 6 | 50 | 8 |
+| **HEST mouse brain** | `HEST_mouse_brain` | 5 | 50 | 8 |
+| **HEST PRAD** | `HEST_PRAD` | 6 | 50 | 8 |
+| HEST LUAD | `HEST_LUAD` | - | - | - |
+
+Processed archives for the available datasets are listed in
+[Data Download](#data-download). HEST LUAD is retained as an optional extension
+and is not part of the processed-data release.
 
 Gene panels and gene-text embeddings are already included under
 `2D/select_genes/`.
@@ -131,12 +135,14 @@ main model on those datasets, add the corresponding entries to `GENE_FILES` and
 All 2D splits are sample-level splits. Spots from the same WSI/sample are never
 split across train and validation folds.
 
-| Dataset family | Split unit | Split implementation | Default seed |
-|---|---|---|---:|
-| cSCC | `.jpg` WSI files under `GSE144240/` | `KFold(..., shuffle=True)` over sorted image files | 1553 |
-| HER2ST | `.jpg` WSI files under `HER2/images/HE/` | `KFold(..., shuffle=True)` over sorted image files | 1553 |
-| HBC | `.jpg` WSI files under the HBC folder | `KFold(..., shuffle=True)` over sorted image files | 1553 |
-| HEST-1k subsets | sample IDs from `Hest1k_datasets/<subset>/st/*.h5ad` | `KFold(..., shuffle=True)` over sorted sample IDs | 1553 |
+All splits use `KFold(..., shuffle=True, random_state=1553)`.
+
+| Dataset family | Split unit | Ordered input |
+|:--|:--|:--|
+| **cSCC** | WSI | Sorted `.jpg` files in `GSE144240/` |
+| **HER2ST** | WSI | Sorted `.jpg` files in `HER2/images/HE/` |
+| **HBC** | WSI | Sorted `.jpg` files in the HBC directory |
+| **HEST-1k** | Sample ID | Sorted `st/*.h5ad` sample IDs |
 
 The generated split JSON records the exact train/validation files. Reusing the
 same `--k_folds` and `--seed` reloads the same split.
@@ -172,18 +178,6 @@ python train_STAG.py --data_name HEST_PRAD --k_folds 6 --epochs 50 --batch_size 
 
 # HEST-LUAD is kept as an optional extension and will be supplemented later.
 ```
-
-Recommended settings:
-
-| Dataset | `--data_name` | Folds | Epochs | Batch size |
-|---|---:|---:|---:|---:|
-| cSCC | `cSCC` | 4 | 50 | 8 |
-| HER2ST | `HER2` | 6 | 50 | 8 |
-| HBC | `HBC` | 9 | 50 | 8 |
-| HEST-kidney | `HEST_kidney` | 6 | 50 | 8 |
-| HEST-mouse-brain | `HEST_mouse_brain` | 5 | 50 | 8 |
-| HEST-PRAD | `HEST_PRAD` | 6 | 50 | 8 |
-| HEST-LUAD | `HEST_LUAD` | To be supplemented | To be supplemented | To be supplemented |
 
 Quick smoke test:
 
@@ -236,15 +230,19 @@ Each `*_all_layer_data.npy` file is a Python dictionary saved with
 }
 ```
 
-### 3D Dataset Table
+### 3D Datasets
 
-| Dataset/config | Expected folder | Required files | Folds | Epochs | Batch size | Status |
-|---|---|---|---:|---:|---:|---|
-| HBC serial sections (`stnet`) | `3D/stnet_dataset_normal_smooth/` | `cropped_imgs/`, `*_all_layer_data.npy`, `stnet_top_250_genes.csv` | 16 | 50 | 16 | Ready |
-| HER2ST serial sections (`her2st`) | `3D/her2st_heg250_dataset/` | `cropped_imgs/`, `*_all_layer_data.npy`, `her2st_top_250_genes.csv` | 8 | 60 | 1 | To be supplemented |
-| Skin (`skin`) | `3D/skin_dataset_normal_smooth/` | `cropped_imgs/`, `*_all_layer_data.npy`, `skin_top_250_genes.csv` | 4 | 20 | 4 | To be supplemented |
-| PCW (`pcw`) | `3D/pcw_dataset_normal_smooth/` | `cropped_imgs/`, `*_all_layer_data.npy`, `pcw_top_250_genes.csv` | 6 | 20 | 2 | To be supplemented |
-| Mouse (`mouse`) | `3D/mouse_dataset_normal_smooth/` | `cropped_imgs/`, `*_all_layer_data.npy`, `mouse_top_250_genes.csv` | 4 | 40 | 2 | To be supplemented |
+| Dataset | `--config_name` | Folds | Epochs | Batch | Data |
+|:--|:--|--:|--:|--:|:--|
+| **HBC serial sections** | `stnet` | 16 | 50 | 16 | **Available** |
+| HER2ST serial sections | `her2st` | 8 | 60 | 1 | Planned |
+| Skin | `skin` | 4 | 20 | 4 | Planned |
+| PCW | `pcw` | 6 | 20 | 2 | Planned |
+| Mouse | `mouse` | 4 | 40 | 2 | Planned |
+
+The HBC release restores `3D/stnet_dataset_normal_smooth/`. The remaining
+configuration files are included for extension experiments, but their
+processed datasets are not part of this release.
 
 ### 3D Splits
 
@@ -252,13 +250,13 @@ All 3D experiments use slice-level cross-validation. A held-out fold contains
 one slice name, and all spots/layer entries from that slice are used for testing.
 The remaining slices are used for training.
 
-| Config | Slice names | Folds |
-|---|---|---:|
-| `stnet` | Slice names are read from the available preprocessed files | 16 folds |
-| `her2st` | `A, B, C, D, E, F, G, H` | 8 |
-| `skin` | `A, B, C, D` | 4 |
-| `pcw` | `A, B, C, D, E, F` | 6 |
-| `mouse` | `A, B, C, D` | 4 |
+| Config | Held-out slices | Folds |
+|:--|:--|--:|
+| `stnet` | Read from the preprocessed files | 16 |
+| `her2st` | `A-H` | 8 |
+| `skin` | `A-D` | 4 |
+| `pcw` | `A-F` | 6 |
+| `mouse` | `A-D` | 4 |
 
 ### 3D Training Commands
 
