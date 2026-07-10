@@ -332,57 +332,121 @@ python main.py --config_name stnet --mode test --model_path logs/<date>/<run_nam
 ## Data Download
 
 The released data are the preprocessed STAG folders used by the training code,
-packaged by dataset. Download the archives from the public data share:
+packaged by dataset. Download the public data package from Aliyun Drive:
 
 ```text
-Data share link: <to be added>
+https://www.alipan.com/s/cbdH9qt6yBK
 ```
 
-The share contains the following files:
+Open the shared folder `STAG_release_data_20260710_exe_2GB` and download every
+file. The files are Aliyun-compatible `.exe` archive containers, not installers.
+Use 7-Zip to extract them. Large archives are split into parts smaller than
+2 GB.
 
-```text
-SHA256SUMS.txt
-STAG-2D-GSE144240.tar.zst
-STAG-2D-HER2.tar.zst
-STAG-2D-HBC.tar.zst
-STAG-2D-HEST-kidney.tar.zst
-STAG-2D-HEST-mouse_brain.tar.zst
-STAG-2D-HEST-PRAD.tar.zst
-STAG-3D-HBC-stnet.tar.zst
-STAG-weights-resnet18.tar.zst
-```
+### Released data files
 
-After downloading the archives, extract them from the repository root:
+| Data package | Files in the shared folder | Restored path |
+|---|---|---|
+| cSCC / GSE144240 | `STAG-2D-GSE144240.exe` | `2D/data/GSE144240/` |
+| HER2ST | `STAG-2D-HER2.exe` | `2D/data/HER2/` |
+| HBC 2D | `STAG-2D-HBC.exe` | `2D/data/Human_breast_cancer_in_situ_capturing_transcriptomics/` |
+| 3D HBC/STNet | `STAG-3D-HBC-stnet.part-01.exe`, `STAG-3D-HBC-stnet.part-02.exe` | `3D/stnet_dataset_normal_smooth/` |
+| ResNet18 weights | `STAG-weights-resnet18.exe` | `2D/weights/`, `3D/weights/` |
+| HEST kidney | `STAG-2D-HEST-kidney.part-01.exe` to `part-03.exe` | `2D/data/Hest1k_datasets/kidney/` |
+| HEST PRAD | `STAG-2D-HEST-PRAD.part-01.exe` to `part-11.exe` | `2D/data/Hest1k_datasets/PRAD/` |
+| HEST mouse brain | `STAG-2D-HEST-mouse_brain.part-01.exe` to `part-23.exe` | `2D/data/Hest1k_datasets/mouse_brain/` |
+| Checksums | `SHA256SUMS.exe_2GB.txt` | optional integrity check |
+
+### Restore on Linux or macOS
+
+Install 7-Zip and zstd first if they are not available:
 
 ```bash
-tar --use-compress-program=unzstd -xf STAG-2D-GSE144240.tar.zst
-tar --use-compress-program=unzstd -xf STAG-2D-HER2.tar.zst
-tar --use-compress-program=unzstd -xf STAG-2D-HBC.tar.zst
-tar --use-compress-program=unzstd -xf STAG-2D-HEST-kidney.tar.zst
-tar --use-compress-program=unzstd -xf STAG-2D-HEST-mouse_brain.tar.zst
-tar --use-compress-program=unzstd -xf STAG-2D-HEST-PRAD.tar.zst
-tar --use-compress-program=unzstd -xf STAG-3D-HBC-stnet.tar.zst
-tar --use-compress-program=unzstd -xf STAG-weights-resnet18.tar.zst
-
-sha256sum -c SHA256SUMS.txt
+# Ubuntu/Debian example
+sudo apt-get install p7zip-full zstd
 ```
 
-The extraction restores the expected training layout:
+Place all downloaded `.exe` files in one temporary directory, then extract every
+container:
+
+```bash
+mkdir -p /tmp/stag_release_extract
+cd /path/to/downloaded/STAG_release_data_20260710_exe_2GB
+
+for f in *.exe; do
+  7z x "$f" -o/tmp/stag_release_extract
+done
+```
+
+Single-file packages produce one `.tar.zst` archive each. Split packages produce
+`.tar.zst.part-XX` files; concatenate the parts in numeric order:
+
+```bash
+cd /tmp/stag_release_extract
+
+cat STAG-3D-HBC-stnet.tar.zst.part-* > STAG-3D-HBC-stnet.tar.zst
+cat STAG-2D-HEST-kidney.tar.zst.part-* > STAG-2D-HEST-kidney.tar.zst
+cat STAG-2D-HEST-PRAD.tar.zst.part-* > STAG-2D-HEST-PRAD.tar.zst
+cat STAG-2D-HEST-mouse_brain.tar.zst.part-* > STAG-2D-HEST-mouse_brain.tar.zst
+```
+
+Unpack the restored archives from the repository root:
+
+```bash
+cd /path/to/STAG
+
+tar --use-compress-program=unzstd -xf /tmp/stag_release_extract/STAG-2D-GSE144240.tar.zst
+tar --use-compress-program=unzstd -xf /tmp/stag_release_extract/STAG-2D-HER2.tar.zst
+tar --use-compress-program=unzstd -xf /tmp/stag_release_extract/STAG-2D-HBC.tar.zst
+tar --use-compress-program=unzstd -xf /tmp/stag_release_extract/STAG-3D-HBC-stnet.tar.zst
+tar --use-compress-program=unzstd -xf /tmp/stag_release_extract/STAG-weights-resnet18.tar.zst
+tar --use-compress-program=unzstd -xf /tmp/stag_release_extract/STAG-2D-HEST-kidney.tar.zst
+tar --use-compress-program=unzstd -xf /tmp/stag_release_extract/STAG-2D-HEST-PRAD.tar.zst
+tar --use-compress-program=unzstd -xf /tmp/stag_release_extract/STAG-2D-HEST-mouse_brain.tar.zst
+```
+
+Optionally verify the downloaded `.exe` files before extraction:
+
+```bash
+sha256sum -c SHA256SUMS.exe_2GB.txt
+```
+
+Run the checksum command in the folder containing the downloaded `.exe` files.
+
+### Restore on Windows
+
+1. Install [7-Zip](https://www.7-zip.org/).
+2. Download all files from `STAG_release_data_20260710_exe_2GB`.
+3. Right-click each `.exe` file and extract it with 7-Zip into the same folder.
+4. For split packages, concatenate the extracted `*.tar.zst.part-XX` files in
+   numeric order before extracting the rebuilt `.tar.zst` archive.
+
+Example PowerShell commands for split packages:
+
+```powershell
+cmd /c copy /b STAG-3D-HBC-stnet.tar.zst.part-* STAG-3D-HBC-stnet.tar.zst
+cmd /c copy /b STAG-2D-HEST-kidney.tar.zst.part-* STAG-2D-HEST-kidney.tar.zst
+cmd /c copy /b STAG-2D-HEST-PRAD.tar.zst.part-* STAG-2D-HEST-PRAD.tar.zst
+cmd /c copy /b STAG-2D-HEST-mouse_brain.tar.zst.part-* STAG-2D-HEST-mouse_brain.tar.zst
+```
+
+Then use 7-Zip to extract each `.tar.zst` archive into the repository root.
+
+The restored layout should include:
 
 ```text
 2D/data/GSE144240/
 2D/data/HER2/
 2D/data/Human_breast_cancer_in_situ_capturing_transcriptomics/
 2D/data/Hest1k_datasets/kidney/
-2D/data/Hest1k_datasets/mouse_brain/
 2D/data/Hest1k_datasets/PRAD/
+2D/data/Hest1k_datasets/mouse_brain/
 2D/weights/tenpercent_resnet18.ckpt
 3D/stnet_dataset_normal_smooth/
 3D/weights/tenpercent_resnet18.ckpt
 ```
 
-See [`DATA.md`](DATA.md) for the same data package list and verification
-commands.
+See [`DATA.md`](DATA.md) for the detailed data restoration guide.
 
 ## Citation
 
